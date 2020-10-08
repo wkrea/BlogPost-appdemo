@@ -1,0 +1,7 @@
+@startuml
+interface IUsuarioServicio {
+    CrearUsuario(user:Usuario) : Task
+    GetUsuarios() : Task<IEnumerable<Usuario>>
+    GetUsuario(id:int) : Task<Usuario>
+}
+@enduml

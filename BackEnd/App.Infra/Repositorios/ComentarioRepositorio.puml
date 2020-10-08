@@ -1,0 +1,13 @@
+@startuml
+class ComentarioRepositorio {
+    - AppDBContext : AppDBContext
+    + ComentarioRepositorio(AppDBContext:AppDBContext)
+    + Listar : IEnumerable<Comentario> <<get>>
+    + <<async>> Crear(comentario:Comentario) : Task
+    + <<async>> Editar(comentario:Comentario) : Task
+    + <<async>> Eliminar(id:int) : Task
+    + BuscarXId(Id:int) : Comentario
+    + <<async>> BuscarPostXId(postId:int) : Task<IEnumerable<Comentario>>
+}
+IComentarioRepositorio <|-- ComentarioRepositorio
+@enduml

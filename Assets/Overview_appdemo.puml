@@ -1,0 +1,42 @@
+@startuml
+
+!includeurl ./Assets/Detail_appdemo.puml
+
+node "FrontEnd" {
+  [app] ..> () HTTPClient : use
+}
+
+cloud {
+  [HTTP] <--> HTTPClient
+}
+
+node "App.Api" {
+  package "Controllers"{
+  }
+  Controllers ..> Servicios : use
+  Controllers ..> HTTP : use
+}
+
+node "App.Core" {
+  package "Interfaces"{
+  }
+  package "Servicios"{
+  }
+  Servicios ..> Interfaces : use
+}
+
+node "App.Infra" {
+  package "Repositorios"{
+  }
+  package "Contexto"{
+  }
+
+  Repositorios --(0- Interfaces : implements
+  Repositorios ..> Contexto : use
+  Contexto ..> SqlServer
+}
+
+database "SqlServer" {
+}
+
+@enduml

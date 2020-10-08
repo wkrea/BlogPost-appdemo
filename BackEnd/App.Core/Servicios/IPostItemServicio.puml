@@ -1,0 +1,11 @@
+@startuml
+interface IPostItemServicio {
+    CrearPostItem(postItem:PostItem) : Task<IEnumerable<ErrorApp>>
+    CrearComentario(comment:Comentario) : Task<IEnumerable<ErrorApp>>
+    GetPostItemById(id:int) : Task<bool>
+    EliminarPostItem(id:int) : Task
+    EditarPostItem(postItem:PostItem) : Task<IEnumerable<ErrorApp>>
+    GetComentariosByPostItemId(postId:int) : Task<IEnumerable<Comentario>>
+    ListarPostsItems() : Task<IEnumerable<PostItem>>
+}
+@enduml
