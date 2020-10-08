@@ -52,15 +52,16 @@ o viceversa, según sea el caso de su preferencia.
 
 ### Visión General (appdemo)
 ```plantuml
-'!include ./Assets/Detail_appdemo.puml
+'!include ./Assets/Overview_appdemo.puml
 ```
-![Detail_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Overview_appdemo.puml)
+![Overview_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Overview_appdemo.puml)
+
 
 ### Vista Detallada (appdemo)
 ```plantuml
-'!include ./Assets/Overview_appdemo.puml
+'!include ./Assets/Detail_appdemo.puml
 ```
-![Overview_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Detail_appdemo.puml)
+![Detail_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Detail_appdemo.puml)
 
 ## Referencias
 
