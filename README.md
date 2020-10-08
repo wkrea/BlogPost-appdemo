@@ -52,12 +52,12 @@ o viceversa, según sea el caso de su preferencia.
 
 ### Visión General (appdemo)
 ```plantuml
-!include ./Assets/Detail_appdemo.puml
+!include ./Assets/Overview_appdemo.puml
 ```
 
 ### Vista Detallada (appdemo)
 ```plantuml
-!include ./Assets/Overview_appdemo.puml
+!include ./Assets/Detail_appdemo.puml
 ```
 
 ## Referencias

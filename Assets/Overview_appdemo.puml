@@ -1,7 +1,5 @@
 @startuml
 
-!includeurl ./Assets/Detail_appdemo.puml
-
 node "FrontEnd" {
   [app] ..> () HTTPClient : use
 }
