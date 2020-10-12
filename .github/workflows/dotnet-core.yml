@@ -31,9 +31,6 @@ jobs:
     - name: Compilar
       run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
 
-    - name: Compilar
-      run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
-
     - name: Elegir \#Build para el PR (if pr)
       id: PRNUMBER
       if: ${{ github.event_name == 'pull_request' }}
@@ -61,7 +58,7 @@ jobs:
       if: ${{always()}}
       with:
         name: 'Test Run'
-        path: ${{github.workspace}}/${{env.file_name}}
+        path: ${{github.workspace}}/BackEnd/App.Test/${{env.file_name}}
       
       # add report as PR comment (if PR)
     - name: comment PR
@@ -70,4 +67,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        path: ${{env.file_name}}
+        path: ${{github.workspace}}/BackEnd/App.Test/${{env.file_name}}
