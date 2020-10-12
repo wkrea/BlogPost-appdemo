@@ -20,4 +20,4 @@ jobs:
         #dotnet-version: '3.1.x'
     - run: dotnet restore ./BackEnd/App.Api/
     - run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
-    - run: dotnet test ${{github.workspace}}/Backend/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
+    - run: dotnet test ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
