@@ -6,6 +6,7 @@ namespace App.Core.Interfaces
 {
     public interface IComentarioRepositorio
     {
+        Task GuardarContext();
         IEnumerable<Comentario> Listar { get; }
         Task Crear(Comentario comment);
         Task Eliminar(int id);

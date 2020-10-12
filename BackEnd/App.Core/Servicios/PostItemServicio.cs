@@ -28,35 +28,20 @@ namespace App.Core.Servicios
             this.comentarioValidator = comentarioValidator;
         }
 
-        public async Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comentario)
+        public async Task<IEnumerable<PostItem>> ListarPostsItems()
         {
-            comentario.CreadoFecha = DateTime.Now;
-            var errors = this.comentarioValidator.Validar(comentario);
-            await this.comentarioRepositorio.Crear(comentario);
-            return errors;
+            return await this.postItemRepositorio.Listar();
         }
-
+        public async Task<PostItem> GetPostItemById(int id)
+        {
+            return await this.postItemRepositorio.BuscarXId(id);;
+        }
         public async Task<IEnumerable<ErrorApp>> CrearPostItem(PostItem postItem)
         {
             postItem.CreadoFecha = DateTime.Now;
             var errors = this.postValidator.Validar(postItem);
             await postItemRepositorio.Crear(postItem);
             return errors;
-        }
-
-        public Task EliminarPostItem(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<PostItem>> ListarPostsItems()
-        {
-            return await this.postItemRepositorio.Listar();
-        }
-
-        public Task<IEnumerable<Comentario>> GetComentariosByPostItemId(int postId)
-        {
-            return this.comentarioRepositorio.BuscarPostXId(postId);
         }
 
         public async Task<IEnumerable<ErrorApp>> EditarPostItem(PostItem postItem)
@@ -76,9 +61,22 @@ namespace App.Core.Servicios
             return errores;
         }
 
-        public async Task<bool> GetPostItemById(int id)
+        public Task EliminarPostItem(int id)
         {
-            return await this.postItemRepositorio.postExiste(id);
+            throw new NotImplementedException();
         }
+
+        public async Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comentario)
+        {
+            comentario.CreadoFecha = DateTime.Now;
+            var errors = this.comentarioValidator.Validar(comentario);
+            await this.comentarioRepositorio.Crear(comentario);
+            return errors;
+        }
+        public Task<IEnumerable<Comentario>> GetComentariosByPostItemId(int postId)
+        {
+            return this.comentarioRepositorio.BuscarPostXId(postId);
+        }
+
     }
 }
