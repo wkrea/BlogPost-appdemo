@@ -8,7 +8,12 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest #ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+          - os: ubuntu-latest
     env:
       config: 'Release'
 
@@ -34,6 +39,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       uses: kkak10/pr-number-action@v1.3
             
+    - run: echo ${{matrix.TARGET}}
       # set report file and title 
     - name: Titulo reporte de Tests
       run: | 
