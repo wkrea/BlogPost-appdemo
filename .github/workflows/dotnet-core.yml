@@ -24,4 +24,4 @@ jobs:
       run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
       
     - name: Test
-      run: dotnet test ./Backend/App.Test/App.Test.csproj --no-restore --verbosity normal
+      run: dotnet test ./Backend/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
