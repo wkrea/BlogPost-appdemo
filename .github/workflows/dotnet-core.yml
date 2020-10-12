@@ -17,11 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.401
-    - name: Restauración de dependencias
-      run: dotnet restore ./BackEnd/App.Api/
-
-    - name: Compilar
-      run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
-      
-    - name: Test
-      run: dotnet test ${{github.workspace}}/Backend/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
+        #dotnet-version: '3.1.x'
+    - run: dotnet restore ./BackEnd/App.Api/
+    - run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
+    - run: dotnet test ${{github.workspace}}/Backend/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
