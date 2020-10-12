@@ -8,16 +8,43 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    env:
+      config: 'Release'
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
+    - name: Obtener Código fuente
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        
+    - name: Instalar .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.401
-        #dotnet-version: '3.1.x'
-    - run: dotnet restore ./BackEnd/App.Api/
-    - run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
-    - run: dotnet test ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
+
+    - name: Restauración de dependencias
+      run: dotnet restore ./BackEnd/App.Api/
+
+    - name: Compilar
+      run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
+
+    - name: Elegir \#Build para el PR (if pr)
+      id: PRNUMBER
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: kkak10/pr-number-action@v1.3
+
+      # set report file and title 
+    - name: Titulo reporte de Tests
+      run: | 
+            if ${{ github.event_name == 'pull_request' }}
+            then
+              echo "title=Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})" >> $GITHUB_ENV
+              echo "file_name=TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md" >> $GITHUB_ENV
+            else
+              echo "title=Tests ${{github.run_number}}" >> $GITHUB_ENV
+              echo "file_name=TestReport.${{github.run_number}}.md" >> $GITHUB_ENV
+            fi
+    # run tests with built project
+    - name: Ejecutar Tests PR     
+      run: dotnet test ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj --no-restore --verbosity normal --configuration Release
