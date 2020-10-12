@@ -17,9 +17,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.401
-    - name: Install dependencies
-      run: dotnet restore ./Backend/App.Api/
-    - name: Build
-      run: dotnet build ./Backend/App.Api/ --configuration Release --no-restore
+    - name: Restauración de dependencias
+      run: dotnet restore ./BackEnd/App.Api/
+
+    - name: Compilar
+      run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
+      
     - name: Test
-      run: dotnet test ./Backend/App.Test/ --no-restore --verbosity normal
+      run: dotnet test ./Backend/App.Test/App.Test.csproj --no-restore --verbosity normal
