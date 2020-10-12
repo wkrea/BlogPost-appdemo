@@ -20,6 +20,6 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build ./Backend/App.Api --configuration Release --no-restore
+      run: dotnet build ./Backend/App.Api/ --configuration Release --no-restore
     - name: Test
-      run: dotnet test ./Backend/App.Test --no-restore --verbosity normal
+      run: dotnet test ./Backend/App.Test/ --no-restore --verbosity normal
