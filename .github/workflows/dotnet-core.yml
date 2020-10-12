@@ -33,18 +33,32 @@ jobs:
       id: PRNUMBER
       if: ${{ github.event_name == 'pull_request' }}
       uses: kkak10/pr-number-action@v1.3
-
+            
       # set report file and title 
     - name: Titulo reporte de Tests
       run: | 
-            if ${{ github.event_name == 'pull_request' }}
-            then
-              echo "title=Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})" >> $GITHUB_ENV
-              echo "file_name=TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md" >> $GITHUB_ENV
+            if [ "$RUNNER_OS" == "Linux" ]; then
+              if ${{ github.event_name == 'pull_request' }}
+              then
+                echo "title=Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})" >> $GITHUB_ENV
+                echo "file_name=TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md" >> $GITHUB_ENV
+              else
+                echo "title=Tests ${{github.run_number}}" >> $GITHUB_ENV
+                echo "file_name=TestReport.${{github.run_number}}.md" >> $GITHUB_ENV
+              fi
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+                if ( github.event_name -eq 'pull_request' )
+                  echo "title=Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})" >> $GITHUB_ENV
+                  echo "file_name=TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md" >> $GITHUB_ENV
+                else
+                  echo "title=Tests ${{github.run_number}}" >> $GITHUB_ENV
+                  echo "file_name=TestReport.${{github.run_number}}.md" >> $GITHUB_ENV
+                fi
             else
-              echo "title=Tests ${{github.run_number}}" >> $GITHUB_ENV
-              echo "file_name=TestReport.${{github.run_number}}.md" >> $GITHUB_ENV
+              echo "$RUNNER_OS not supported"
+              exit 1
             fi
+            
     # run tests with built project
     - name: Restauración de dependencias Tests PR     
       run: dotnet restore ./BackEnd/App.Test/App.Test.csproj
