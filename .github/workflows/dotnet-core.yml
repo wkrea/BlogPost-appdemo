@@ -41,11 +41,11 @@ jobs:
       run: | 
             if ${{ github.event_name == 'pull_request' }}
             then
-              echo "::set-env name=title::Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})"
-              echo "::set-env name=file_name::TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md"
+              echo "Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})" >> $title
+              echo "TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md" >> $file_name
             else
-              echo "::set-env name=title::Tests ${{github.run_number}}"
-              echo "::set-env name=file_name::TestReport.${{github.run_number}}.md"
+              echo "Tests ${{github.run_number}}" >> $title
+              echo "TestReport.${{github.run_number}}.md" >> $file_name
             fi
       
       # run tests with built project
