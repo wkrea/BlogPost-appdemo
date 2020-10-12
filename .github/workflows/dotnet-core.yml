@@ -52,13 +52,15 @@ jobs:
     - name: Ejecutar Tests PR      
       run: dotnet test ./BackEnd/App.Test/App.Test.csproj --no-restore --no-build --configuration $config --logger:"liquid.md;LogFileName=${{env.file_name}};Title=${{env.title}};" 
 
-    - name: Cat for GitHub Actions
+    - name: Path lister action
       # You may pin to the exact commit or the version.
-      # uses: pCYSl5EDgo/cat@264f5b318158276af69bd0a2a9f1e613b2d03ebf
-      uses: pCYSl5EDgo/cat@1.0.0
+      # uses: Rishabh510/Path-lister-action@d55145f250893537e7d08e067b9422ba7a0ab9e7
+      uses: Rishabh510/Path-lister-action@1.0
       with:
-        # A file to read
-        path: ./BackEnd/App.Test/TestResults/${{env.file_name}}
+        # Path to find the files
+        path: ./
+        # Type of files to find
+        type:  .md
                 
          # upload report as build artifact
     - name: Upload a Build Artifact
