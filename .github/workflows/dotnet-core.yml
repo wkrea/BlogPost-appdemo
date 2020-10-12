@@ -1,0 +1,56 @@
+name: Aprendiendo con un web API .NET Core
+
+on:
+  push:
+    branches: [ main, CICD]
+  pull_request:
+    branches: [ main, CICD, BackEnd, FrontEnd]
+
+jobs:
+  build:
+    # https://dev.to/kurtmkurtm/testing-net-core-apps-with-github-actions-3i76
+    runs-on: ubuntu-latest
+    # use release mode for all steps
+    env:
+      config: 'Release'
+
+    steps:
+    - name: Obtener Código fuente
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Instalar .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.401
+
+    - name: Restauración de dependencias
+      run: dotnet restore ./BackEnd/App.Api/
+
+    - name: Compilar
+      run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
+
+    - name: Compilar
+      run: dotnet build --configuration Release --no-restore ./BackEnd/App.Api/App.Api.csproj
+
+    - name: set PR build number (if pr)
+      id: PRNUMBER
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: kkak10/pr-number-action@v1.3
+      
+      # set report file and title 
+    - name: Titulo reporte de Tests
+      run: | 
+            if ${{ github.event_name == 'pull_request' }}
+            then
+              echo "::set-env name=title::Tests para PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})"
+              echo "::set-env name=file_name::TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md"
+            else
+              echo "::set-env name=title::Tests ${{github.run_number}}"
+              echo "::set-env name=file_name::TestReport.${{github.run_number}}.md"
+            fi
+      
+      # run tests with built project
+    - name: Ejecutar Tests PR      
+      run: dotnet test ./BackEnd/App.Test/ --no-restore --no-build --configuration $config --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
