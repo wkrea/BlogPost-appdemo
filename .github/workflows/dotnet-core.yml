@@ -52,10 +52,10 @@ jobs:
     - name: Ejecutar Tests PR      
       run: dotnet test ./BackEnd/App.Test/App.Test.csproj --no-restore --no-build --configuration $config --logger:"liquid.md;LogFileName=${{env.file_name}};Title=${{env.title}};" 
 
-    - name: Bash Command Lines for GitHub Actions
+    - name: Bash for GitHub Actions
       # You may pin to the exact commit or the version.
-      # uses: jdickey/bash@bc09809bde62634bf1f6fdfc820428e7ac10eea4
-      uses: jdickey/bash@v.1.1.1
+      # uses: jcblw/bash@7bad2d963d87fdb2276647306e579de3df2c6000
+      uses: jcblw/bash@1.0.0
         args = ["ls ${{github.workspace}}"]
                 
          # upload report as build artifact
