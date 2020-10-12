@@ -58,7 +58,7 @@ jobs:
       if: ${{always()}}
       with:
         name: 'Test Run'
-        path: ${{github.workspace}}/BackEnd/App.Test/${{env.file_name}}
+        path: ${{github.workspace}}/BackEnd/App.Test/TestResults/${{env.file_name}}
       
       # add report as PR comment (if PR)
     - name: comment PR
