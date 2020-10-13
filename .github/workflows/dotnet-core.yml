@@ -53,6 +53,26 @@ jobs:
     - name: Ejecutar Tests PR     
       run: dotnet test ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj --verbosity normal --no-restore --no-build --configuration $config --logger:"liquid.md;LogFileName=${{env.file_name}};Title=${{env.title}};" 
     
+    - name: Coveralls GitHub Action
+      # You may pin to the exact commit or the version.
+      # uses: coverallsapp/github-action@8cbef1dea373ebce56de0a14c68d6267baa10b44
+      uses: coverallsapp/github-action@v1.1.2
+      with:
+        # 
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        # Path to lcov file
+        path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
+        # Job flag name, e.g. "Unit", "Functional", or "Integration". Will be shown in the Coveralls UI.
+        flag-name: "Unit Test"
+        # Set to true if you are running parallel jobs, then use "parallel_finished: true" for the last action.
+        #parallel: # optional
+        # Set to true for the last action when using "parallel: true".
+        #parallel-finished: # optional
+        # Coveralls Enterprise server (more info: https://enterprise.coveralls.io)
+        #coveralls-endpoint: # optional, default is https://coveralls.io
+        # The root folder of the project that originally ran the tests
+        base-path: ${{github.workspace}}/BackEnd/App.Test/ # optional
+    
     - name: Generate coverage report
       run: |
         cd ${{github.workspace}}/BackEnd/App.Test/
