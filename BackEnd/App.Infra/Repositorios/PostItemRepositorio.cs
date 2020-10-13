@@ -1,9 +1,9 @@
-﻿using App.Core.Dominio;
+﻿using System.Data.Common;
+using App.Core.Dominio;
 using App.Core.Dominio.Errors;
 using App.Core.Interfaces;
 using App.Infra.Contexto;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,6 +17,17 @@ namespace App.Infra.Repositorios
         {
             this._context = AppDBContext;
         }
+        public async Task GuardarContext()
+        {
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbException ex)
+            {
+                throw ex;
+            }
+        }
 
         public async Task<IEnumerable<PostItem>> Listar()
         {
@@ -26,30 +37,25 @@ namespace App.Infra.Repositorios
         public async Task Crear(PostItem postItem)
         {
             _context.PostItems.Add(postItem);
-            await _context.SaveChangesAsync();
+            await this.GuardarContext();
         }
 
         public async Task Editar(PostItem postItem)
         {
             _context.Entry(postItem).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                throw ex;
-            }
+            await this.GuardarContext();
         }
 
         public async Task Eliminar(int id)
         {
-            throw new NotImplementedException();
+            PostItem item = await _context.PostItems.FindAsync(id);
+            if(item != null){
+                _context.PostItems.Remove(item);
+                await this.GuardarContext();
+            }
         }
 
-        public PostItem BuscarXId(int id) => _context.Find<PostItem>(id);
-
+        public async Task<PostItem> BuscarXId(int id) => await _context.FindAsync<PostItem>(id);
 
         public async Task<bool> postExiste(int id)
         {

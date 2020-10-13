@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/wkrea/appdemo/badge.svg?branch=main)](https://coveralls.io/github/wkrea/appdemo?branch=main)
+
 # appdemo
 
 Aplicación demo para aplicación de metodología modular
@@ -61,10 +63,12 @@ o viceversa, según sea el caso de su preferencia.
 ### Vista Detallada (appdemo)
 
 ```plantuml
-'!include ./Assets/Detail_appdemo.puml
+!include ./Assets/Detail_appdemo.puml
 ```
-
+<!-- 
+<iframe width="100%" height="500" src=http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Detail_appdemo.puml>
 ![Detail_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Detail_appdemo.puml)
+</iframe> -->
 
 ## Referencias
 

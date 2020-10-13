@@ -6,35 +6,33 @@ Este proyecto está pensado para acoger la lógica de negocio y la construcción
 
 ## Contexto
 
+* AppDBContext
+* AppDBSeedData
+
 ### AppDBContexto
 ```plantuml
-!include ./Contexto/AppDBContext.puml
-```
-
-## AppDBContext
-
-```plantuml
-!include ./Contexto/AppDBSeedData.puml
+package App.Infra{
+  namespace App.Infra.Contexto #DDDDDD{
+    !include ./Contexto/AppDBContext.puml
+    !include ./Contexto/AppDBSeedData.puml
+  }
+}
 ```
 
 ## Repositorios
 
-### UsuarioRepositorio
+* UsuarioRepositorio
+* ComentarioRepositorio
+* PostItemRepositorio
 
 ```plantuml
-!include ./Repositorios/UsuarioRepositorio.puml
-```
-
-### ComentarioRepositorio
-
-```plantuml
-!include ./Repositorios/ComentarioRepositorio.puml
-```
-
-### PostItemRepositorio
-
-```plantuml
-!include ./Repositorios/PostItemRepositorio.puml
+package App.Infra{
+  namespace App.Infra.Contexto #DDDDDD{
+    !include ./Repositorios/UsuarioRepositorio.puml
+    !include ./Repositorios/ComentarioRepositorio.puml
+    !include ./Repositorios/PostItemRepositorio.puml
+  }
+}
 ```
 
 ## Referencias

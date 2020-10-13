@@ -73,7 +73,7 @@ namespace App.Api.Controllers
             }
 
             var existe = await this.postItemService.GetPostItemById(id);
-            if (!existe)
+            if (existe == null)
             {
                 NotFound();
             }
