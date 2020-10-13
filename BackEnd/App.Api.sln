@@ -13,10 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Infra", "App.Infra\App.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Test", "App.Test\App.Test.csproj", "{579341B2-C241-4684-89CF-EBFB7740FD8D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlantUmlClassDiagramGenerator", "PlantUmlClassDiagramGenerator\src\PlantUmlClassDiagramGenerator\PlantUmlClassDiagramGenerator.csproj", "{2873D846-A7C1-4885-9FBF-7DA86EA3B548}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlantUmlClassDiagramGenerator.Library", "PlantUmlClassDiagramGenerator\src\PlantUmlClassDiagramGenerator.Library\PlantUmlClassDiagramGenerator.Library.csproj", "{FFC0039A-D1D8-4EB0-95D6-2E2A9DDB1CA8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,14 +35,6 @@ Global
 		{579341B2-C241-4684-89CF-EBFB7740FD8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579341B2-C241-4684-89CF-EBFB7740FD8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579341B2-C241-4684-89CF-EBFB7740FD8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2873D846-A7C1-4885-9FBF-7DA86EA3B548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2873D846-A7C1-4885-9FBF-7DA86EA3B548}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2873D846-A7C1-4885-9FBF-7DA86EA3B548}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2873D846-A7C1-4885-9FBF-7DA86EA3B548}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFC0039A-D1D8-4EB0-95D6-2E2A9DDB1CA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFC0039A-D1D8-4EB0-95D6-2E2A9DDB1CA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFC0039A-D1D8-4EB0-95D6-2E2A9DDB1CA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFC0039A-D1D8-4EB0-95D6-2E2A9DDB1CA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
