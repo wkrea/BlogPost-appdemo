@@ -42,9 +42,9 @@ jobs:
 
     - name: Ejecutar Tests
       run: |
-        dotnet test --no-restore --verbosity normal ./App.Test/App.Test.csproj \
-        --no-build --configuration $config \
-        --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
+        dotnet test --no-restore --verbosity normal --no-build --configuration $config \
+        --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};" \
+        ./App.Test/App.Test.csproj
 
     - name: Generate coverage report
       run: |
