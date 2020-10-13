@@ -22,8 +22,7 @@ jobs:
       run: dotnet restore ./App.Api/
     - name: Construir Aplicación
       run: dotnet build --configuration Release --no-restore ./App.Api/App.Api.csproj
-    - name: Ejecutar Tests
-      run: dotnet test --no-restore --verbosity normal ./App.Test/App.Test.csproj 
+
     - name: Elegir \#Build para el PR (if pr)
       id: PRNUMBER
       if: ${{ github.event_name == 'pull_request' }}
@@ -41,7 +40,12 @@ jobs:
               echo "file_name=TestReport.${{github.run_number}}.md" >> $GITHUB_ENV
             fi
 
-            
+    - name: Ejecutar Tests
+      run: |
+      dotnet test --no-restore --verbosity normal ./App.Test/App.Test.csproj \
+      --no-build --configuration $config \
+      --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
+
 # # dotnet add package coverlet.msbuild
 
 # name: Aprendiendo con un web API .NET Core
