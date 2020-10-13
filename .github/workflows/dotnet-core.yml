@@ -56,7 +56,7 @@ jobs:
     - name: Generate coverage report
       run: |
         cd ${{github.workspace}}/BackEnd/App.Test/
-        dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
+        dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/coverage.info -p:CoverletOutputFormat=lcov
     - name: Contenido
       run:  |
         ls ${{github.workspace}}/BackEnd/App.Test/TestResults/
