@@ -58,7 +58,7 @@ jobs:
     
     - name: Content list
       run: |
-        ls ./BackEnd/
+        ls ./
         ls ${{github.workspace}}
     
     - name: Coveralls
