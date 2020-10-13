@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/wkrea/appdemo/badge.svg?branch=main)](https://coveralls.io/github/wkrea/appdemo?branch=main)
+
 # appdemo
 
 Aplicación demo para aplicación de metodología modular
