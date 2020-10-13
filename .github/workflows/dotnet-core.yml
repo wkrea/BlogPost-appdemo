@@ -42,9 +42,14 @@ jobs:
 
     - name: Ejecutar Tests
       run: |
-      dotnet test --no-restore --verbosity normal ./App.Test/App.Test.csproj \
-      --no-build --configuration $config \
-      --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
+        dotnet test --no-restore --verbosity normal ./App.Test/App.Test.csproj \
+        --no-build --configuration $config \
+        --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
+
+    - name: Generate coverage report
+      run: |
+        cd ./App.Test/
+        dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
 
 # # dotnet add package coverlet.msbuild
 
