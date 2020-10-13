@@ -64,7 +64,7 @@ jobs:
       uses: coverallsapp/github-action@v1.1.2
       with:
         # 
-        github-token: ${{ secrets.COVERLET_TOKEN }}
+        github-token: ${{ secrets.github_token }}
         # Path to lcov file
         path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
         # Job flag name, e.g. "Unit", "Functional", or "Integration". Will be shown in the Coveralls UI.
@@ -81,7 +81,7 @@ jobs:
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
-        github-token: ${{ secrets.COVERLET_TOKEN }}
+        github-token: ${{ secrets.github_token  }}
         path-to-lcov: ./MyLibrary.Tests/TestResults/coverage.info 
         
     - name: Build and deploy package
