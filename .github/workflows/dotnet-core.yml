@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      config: 'Release'
     defaults:
       run:
         working-directory: BackEnd
@@ -42,6 +44,7 @@ jobs:
 
     - name: Ejecutar Tests
       run: |
+        dotnet restore ./App.Test/
         dotnet test --no-restore --verbosity normal --no-build --configuration $config \
         --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};" \
         ./App.Test/App.Test.csproj
