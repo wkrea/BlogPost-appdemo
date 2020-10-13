@@ -6,11 +6,12 @@ namespace App.Core.Interfaces
 {
     public interface IPostItemRepositorio
     {
+        Task GuardarContext();
         Task<IEnumerable<PostItem>> Listar();
         Task Crear(PostItem postItem);
         Task Eliminar(int id);
         Task Editar(PostItem postItem);
-        PostItem BuscarXId(int Id);
+        Task<PostItem> BuscarXId(int Id);
         Task<bool> postExiste(int id);
     }
 }

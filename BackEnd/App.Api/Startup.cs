@@ -45,6 +45,19 @@ namespace App.Api
                 });
             });
 
+            // Enable Cors
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                  builder =>
+                  {
+                      builder.AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowAnyOrigin()
+                    ;
+                  });
+            });
 
             services.AddMvc();
             services.AddControllers();
@@ -63,6 +76,9 @@ namespace App.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "UDI Web API Demo V1");
             });
+
+            // CORS
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseHttpsRedirection();
             app.UseRouting();

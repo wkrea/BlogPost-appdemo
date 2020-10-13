@@ -2,41 +2,52 @@
 using App.Core.Interfaces;
 using App.Infra.Contexto;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace App.Infra.Repositorios
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
-        private AppDBContext AppDBContext;
-
+        private AppDBContext _context;
         public UsuarioRepositorio(AppDBContext AppDBContext)
         {
-            this.AppDBContext = AppDBContext;
+            this._context = AppDBContext;
         }
+        public async Task GuardarContext(){
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbException ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<IEnumerable<Usuario>> Listar() => await _context.Usuarios.ToListAsync<Usuario>();
 
-        public async Task<IEnumerable<Usuario>> Listar() => await AppDBContext.Usuarios.ToListAsync<Usuario>();
-
-        public void Crear(Usuario postItem)
+        public async Task Crear(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _context.Usuarios.Add(usuario);
+            await this.GuardarContext();
         }
-
-        public void Eliminar(int id)
+        public async Task Eliminar(int id)
         {
-            throw new NotImplementedException();
+            Usuario usuario = await _context.Usuarios.FindAsync(id);
+            if(usuario != null){
+                _context.Usuarios.Remove(usuario);
+                await this.GuardarContext();
+            }
         }
-
         public async Task<Usuario> BuscarXId(int id)
         {
-            return await AppDBContext.Usuarios.FindAsync(id);
+            return await _context.Usuarios.FindAsync(id);
         }
-
-        public void Modificar(Usuario postItem)
+        public async Task Editar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _context.Entry(usuario).State = EntityState.Modified;
+            await this.GuardarContext();
         }
     }
 }
