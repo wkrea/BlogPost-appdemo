@@ -60,6 +60,7 @@ jobs:
     - name: Contenido
       run:  |
         ls ${{github.workspace}}/BackEnd/App.Test/TestResults/
+        ls ${{github.workspace}}/BackEnd/App.Test/
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
