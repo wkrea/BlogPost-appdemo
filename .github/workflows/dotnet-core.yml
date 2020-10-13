@@ -59,7 +59,7 @@ jobs:
         dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
     - name: Contenido
       run:  |
-        ls ${{github.workspace}}/BackEnd/App.Test/
+        ls ${{github.workspace}}/BackEnd/App.Test/TestResults/
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
