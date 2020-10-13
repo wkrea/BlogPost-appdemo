@@ -59,6 +59,11 @@ jobs:
         dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
         dotnet test /p:CollectCoverage=true /p:CoverletOutput=..\results\coverage /p:MergeWith=..\results\coverage.json /p:CoverletOutputFormat=\"opencover,json\"
 
+    - name: Contenido
+      run:  |
+        ls ${{github.workspace}}/BackEnd/App.Test/TestResults/
+        ls ${{github.workspace}}/BackEnd/App.Test/
+
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
@@ -67,7 +72,7 @@ jobs:
 
     - name: Build and deploy package
       run: |
-        cd ./MyLibrary/
+        cd ${{github.workspace}}/BackEnd/App.Test/
         dotnet publish -c=Release
         # deploy
 
@@ -207,7 +212,6 @@ jobs:
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #       with:
 #         path: ${{github.workspace}}/BackEnd/App.Test/TestResults/${{env.file_name}}
-
 
 # # ################################################################################################
 
