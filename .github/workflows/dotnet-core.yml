@@ -62,7 +62,7 @@ jobs:
       uses: enricomarino/actions@v2
       with:
         # The folder to inspect
-        source: .
+        source: ${{github.workspace}}
     
     - name: Coveralls
       uses: coverallsapp/github-action@master
