@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+
 using App.Core.Dominio;
 using App.Core.Dominio.Errors;
 using App.Core.Interfaces;
@@ -39,9 +39,18 @@ namespace App.Core.Servicios
         public async Task<IEnumerable<ErrorApp>> CrearPostItem(PostItem postItem)
         {
             postItem.CreadoFecha = DateTime.Now;
-            var errors = this.postValidator.Validar(postItem);
-            await postItemRepositorio.Crear(postItem);
-            return errors;
+
+            List<ErrorApp> errores = null;
+            try
+            {
+                errores.AddRange(this.postValidator.Validar(postItem));
+                await postItemRepositorio.Crear(postItem);
+            }
+            catch
+            {
+                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+            }
+            return errores;
         }
 
         public async Task<IEnumerable<ErrorApp>> EditarPostItem(PostItem postItem)
@@ -56,7 +65,7 @@ namespace App.Core.Servicios
             }
             catch
             {
-                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error del dato del servidor" });
+                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
             }
             return errores;
         }
@@ -69,14 +78,21 @@ namespace App.Core.Servicios
         public async Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comentario)
         {
             comentario.CreadoFecha = DateTime.Now;
-            var errors = this.comentarioValidator.Validar(comentario);
-            await this.comentarioRepositorio.Crear(comentario);
-            return errors;
+            List<ErrorApp> errores = null;
+            try
+            {
+                errores.AddRange(this.comentarioValidator.Validar(comentario));
+                await this.comentarioRepositorio.Editar(comentario);
+            }
+            catch
+            {
+                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+            }
+            return errores;
         }
         public Task<IEnumerable<Comentario>> GetComentariosByPostItemId(int postId)
         {
             return this.comentarioRepositorio.BuscarPostXId(postId);
         }
-
     }
 }

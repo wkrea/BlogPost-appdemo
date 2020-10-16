@@ -7,11 +7,11 @@ namespace App.Core.Interfaces
     public interface IComentarioRepositorio
     {
         Task GuardarContext();
-        IEnumerable<Comentario> Listar { get; }
+        Task<IEnumerable<Comentario>> Listar();
         Task Crear(Comentario comment);
         Task Eliminar(int id);
         Task Editar(Comentario comment);
-        Comentario BuscarXId(int Id);
+        Task<Comentario> BuscarXId(int Id);
         Task<IEnumerable<Comentario>> BuscarPostXId(int postId);
     }
 }
