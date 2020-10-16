@@ -13,52 +13,50 @@ namespace App.Infra.Repositorios
 {
     public class ComentarioRepositorio : IComentarioRepositorio
     {
-        private AppDBContext _context;
+        private AppDBContext _contexto;
 
         public ComentarioRepositorio(AppDBContext AppDBContext)
         {
-            this._context = AppDBContext;
+            this._contexto = AppDBContext;
         }
         public async Task GuardarContext(){
             try
             {
-                await _context.SaveChangesAsync();
+                await _contexto.SaveChangesAsync();
             }
             catch (DbException ex)
             {
                 throw ex;
             }
         }
-        public IEnumerable<Comentario> Listar => throw new NotImplementedException();
-        public Comentario BuscarXId(int Id)
+        public async Task<IEnumerable<Comentario>> Listar() => await _contexto.Comentarios.AsNoTracking().ToListAsync();
+        public async Task<Comentario> BuscarXId(int id)
         {
-            throw new NotImplementedException();
-        }
-        public async Task Crear(Comentario comentario)
-        {
-            _context.Comentarios.Add(comentario);
-            await _context.SaveChangesAsync();
-        }
-        public async Task Editar(Comentario comentario)
-        {
-            _context.Entry(comentario).State = EntityState.Modified;
-            await this.GuardarContext();
-            
-        }
-        public async Task Eliminar(int id)
-        {
-            Comentario item = await _context.Comentarios.FindAsync(id);
-            if(item != null){
-                _context.Comentarios.Remove(item);
-                await this.GuardarContext();
-            }
+            return await _contexto.Comentarios.FirstOrDefaultAsync(c=> c.Id.Equals(id));
         }
         public async Task<IEnumerable<Comentario>> BuscarPostXId(int postId)
         {
-            return await _context
-                 .Comentarios
-                 .Where(x => x.PostId == postId)
-                 .ToListAsync();
+            var results = await _contexto.Comentarios.ToListAsync();
+
+            return results.Where(x => x.PostId == postId).ToList();
+        }
+        public async Task Crear(Comentario comentario)
+        {
+            _contexto.Comentarios.Add(comentario);
+            await _contexto.SaveChangesAsync();
+        }
+        public async Task Editar(Comentario comentario)
+        {
+            _contexto.Entry(comentario).State = EntityState.Modified;
+            await this.GuardarContext();
+        }
+        public async Task Eliminar(int id)
+        {
+            Comentario item = await _contexto.Comentarios.FindAsync(id);
+            if(item != null){
+                _contexto.Comentarios.Remove(item);
+                await this.GuardarContext();
+            }
         }
     }
 }

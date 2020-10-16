@@ -1,5 +1,0 @@
-@startuml
-class AppDBSeedData <<static>> {
-    + {static} EnsureSeedDataForContext(context:AppDBContext) : void
-}
-@enduml

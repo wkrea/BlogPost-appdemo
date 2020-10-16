@@ -21,6 +21,33 @@ namespace App.Api.Controllers
             this.postItemService = postItemService;
         }
 
+        #region  GET
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(IList<PostItem>))]
+        public async Task<IActionResult> GetAllPostsItems()
+        {
+            var postItem = await this.postItemService.ListarPostsItems();
+            return Ok(postItem);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(200, Type = typeof(IList<PostItem>))]
+        public async Task<IActionResult> GetPostsItem(int id)
+        {
+            var postItem = await this.postItemService.GetPostItemById(id);
+            return Ok(postItem);
+        }
+
+        [HttpGet("{id}/comentarios")]
+        [ProducesResponseType(200, Type = typeof(IList<Comentario>))]
+        public async Task<IActionResult> GetComments(int id)
+        {
+            var comments = await this.postItemService.GetComentariosByPostItemId(id);
+            return Ok(comments);
+        }
+        #endregion
+
+        #region POST
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorApp>))]
@@ -54,14 +81,9 @@ namespace App.Api.Controllers
 
             return StatusCode(StatusCodes.Status201Created);
         }
+        #endregion
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePostItem(int id)
-        {
-            await this.postItemService.EliminarPostItem(id);
-            return Ok();
-        }
-
+        #region PUT
         [HttpPut("{id}")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorApp>))]
@@ -87,21 +109,15 @@ namespace App.Api.Controllers
             }
             return StatusCode(StatusCodes.Status201Created);
         }
+        #endregion
 
-        [HttpGet("{id}/comentarios")]
-        [ProducesResponseType(200, Type = typeof(IList<Comentario>))]
-        public async Task<IActionResult> GetComments(int id)
+        #region DELETE
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePostItem(int id)
         {
-            var comments = await this.postItemService.GetComentariosByPostItemId(id);
-            return Ok(comments);
+            await this.postItemService.EliminarPostItem(id);
+            return Ok();
         }
-
-        [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IList<PostItem>))]
-        public async Task<IActionResult> GetAllPostsItems()
-        {
-            var postItem = await this.postItemService.ListarPostsItems();
-            return Ok(postItem);
-        }
+        #endregion
     }
 }

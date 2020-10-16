@@ -15,13 +15,7 @@ namespace App.Api.Controllers
             this.usersService = usersService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(Usuario user)
-        {
-            await this.usersService.CrearUsuario(user);
-            return StatusCode(201);
-        }
-
+        #region  GET
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -35,6 +29,29 @@ namespace App.Api.Controllers
             var user = await this.usersService.GetUsuario(id);
             return Ok(user);
         }
+        #endregion
+
+        #region POST
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(Usuario user)
+        {
+            await this.usersService.CrearUsuario(user);
+            return StatusCode(201);
+        }
+        #endregion
+       
+        #region PUT
+        #endregion
+
+        #region DELETE
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePostItem(int id)
+        {
+            await this.usersService.EliminarUsuario(id);
+            return Ok();
+        }
+        #endregion
+
     }
 }
 

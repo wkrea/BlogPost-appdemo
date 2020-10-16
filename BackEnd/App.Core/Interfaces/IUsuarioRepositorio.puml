@@ -1,9 +1,0 @@
-@startuml
-interface IUsuarioRepositorio {
-    Listar() : Task<IEnumerable<Usuario>>
-    Crear(postItem:Usuario) : void
-    Eliminar(id:int) : void
-    Modificar(postItem:Usuario) : void
-    BuscarXId(Id:int) : Task<Usuario>
-}
-@enduml
