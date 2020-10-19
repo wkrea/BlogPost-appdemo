@@ -1,0 +1,17 @@
+@startuml
+class PostItemServicio {
+    - postItemRepositorio : IPostItemRepositorio
+    - comentarioRepositorio : IComentarioRepositorio
+    - postValidator : PostValidador
+    - comentarioValidator : ComentarioValidador
+    + PostItemServicio(postItemRepo:IPostItemRepositorio, comentarioRepo:IComentarioRepositorio, postValidator:PostValidador, comentarioValidator:ComentarioValidador)
+    + <<async>> ListarPostsItems() : Task<IEnumerable<PostItem>>
+    + <<async>> GetPostItemById(id:int) : Task<PostItem>
+    + <<async>> CrearPostItem(postItem:PostItem) : Task<IEnumerable<ErrorApp>>
+    + <<async>> EditarPostItem(postItem:PostItem) : Task<IEnumerable<ErrorApp>>
+    + EliminarPostItem(id:int) : Task
+    + <<async>> CrearComentario(comentario:Comentario) : Task<IEnumerable<ErrorApp>>
+    + GetComentariosByPostItemId(postId:int) : Task<IEnumerable<Comentario>>
+}
+IPostItemServicio <|-- PostItemServicio
+@enduml

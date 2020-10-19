@@ -1,0 +1,10 @@
+@startuml
+interface IUsuarioRepositorio {
+    GuardarContext() : Task
+    Listar() : Task<IEnumerable<Usuario>>
+    Crear(postItem:Usuario) : Task
+    Eliminar(id:int) : Task
+    Editar(postItem:Usuario) : Task
+    BuscarXId(Id:int) : Task<Usuario>
+}
+@enduml

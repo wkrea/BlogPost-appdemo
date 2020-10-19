@@ -1,0 +1,6 @@
+@startuml
+class ServiceExtensions <<static>> {
+    + {static} ConfigureRepositoryWrapper(services:IServiceCollection, config:IConfiguration) : void
+    + {static} ConfigureServiceWrapper(services:IServiceCollection) : void
+}
+@enduml

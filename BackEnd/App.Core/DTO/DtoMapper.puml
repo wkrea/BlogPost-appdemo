@@ -1,0 +1,6 @@
+@startuml
+class DtoMapper <<static>> {
+    + {static} ADominio(postItemDTO:PostItemDTO) : PostItem
+    + {static} ADominio(comentarioDTO:ComentarioDTO) : Comentario
+}
+@enduml

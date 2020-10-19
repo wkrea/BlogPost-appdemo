@@ -17,41 +17,44 @@ skinparam component {
   ArrowFontColor #777777
 }
 
+node "BackEnd"{
+
+  node "App.Api" {
+    package "Controllers"{
+    }
+    Controllers ..> Servicios : use
+    Controllers ..> [HTTPClient] : use
+  }
+
+  node "App.Core" {
+    package "Interfaces"{
+    }
+    package "Servicios"{
+    }
+    Servicios ..> Interfaces : use
+  }
+  
+  node "App.Infra" {
+    package "Contexto"{
+    }
+    package "Repositorios"{
+    }
+    Repositorios --(0- Interfaces : implements
+    Repositorios ..> Contexto : use
+    Contexto ..> Persistencia
+  }
+}
+
 node "FrontEnd" {
-  [app] ..> () HTTPClient : use
+  [app] ..> [HTTpClient] : use
 }
 
 cloud {
-  [HTTP] <--> HTTPClient
+  [HTTPClient] ..> [HTTP] : implements
+  [HTTpClient] ..> [HTTP]  : implements
 }
 
-node "App.Api" {
-  package "Controllers"{
-  }
-  Controllers ..> Servicios : use
-  Controllers ..> HTTP : use
-}
-
-node "App.Core" {
-  package "Interfaces"{
-  }
-  package "Servicios"{
-  }
-  Servicios ..> Interfaces : use
-}
-
-node "App.Infra" {
-  package "Repositorios"{
-  }
-  package "Contexto"{
-  }
-
-  Repositorios --(0- Interfaces : implements
-  Repositorios ..> Contexto : use
-  Contexto ..> SqlServer
-}
-
-database "SqlServer" {
+database "Persistencia" {
 }
 
 @enduml

@@ -1,0 +1,8 @@
+@startuml
+abstract class TextoItem {
+    + Texto : string <<get>> <<set>>
+    + CreadoFecha : DateTime <<get>> <<set>>
+    + ModificadoFecha : DateTime? <<get>> <<set>>
+}
+EntidadBase <|-- TextoItem
+@enduml

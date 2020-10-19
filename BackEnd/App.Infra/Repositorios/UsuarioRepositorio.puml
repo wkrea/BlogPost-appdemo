@@ -1,0 +1,13 @@
+@startuml
+class UsuarioRepositorio {
+    - _context : AppDBContext
+    + UsuarioRepositorio(AppDBContext:AppDBContext)
+    + <<async>> GuardarContext() : Task
+    + <<async>> Listar() : Task<IEnumerable<Usuario>>
+    + <<async>> BuscarXId(id:int) : Task<Usuario>
+    + <<async>> Crear(usuario:Usuario) : Task
+    + <<async>> Editar(usuario:Usuario) : Task
+    + <<async>> Eliminar(id:int) : Task
+}
+IUsuarioRepositorio <|-- UsuarioRepositorio
+@enduml

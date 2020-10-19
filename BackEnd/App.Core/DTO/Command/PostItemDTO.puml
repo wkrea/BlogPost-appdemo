@@ -1,0 +1,6 @@
+@startuml
+class PostItemDTO {
+    + UserId : int <<get>> <<set>>
+    + Texto : string <<get>> <<set>>
+}
+@enduml
