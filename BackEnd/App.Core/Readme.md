@@ -1,4 +1,14 @@
 
+## Dependencias
+
+### Soporte para validaciones de modelo MVC (ModelState)
+
++ dotnet add package Microsoft.AspNetCore.Mvc
+
+### Soporte para manejo de códigos de error HTTP
+
++ dotnet add package Microsoft.AspNetCore.Http
+
 ```plantuml
 @startuml
 package App.Core{

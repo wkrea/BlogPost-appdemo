@@ -9,8 +9,8 @@ namespace App.Core.Servicios
     {
         Task<IEnumerable<Usuario>> GetUsuarios();
         Task<Usuario> GetUsuario(int id);
-        Task<IEnumerable<ErrorApp>> CrearUsuario(Usuario user);
-        Task<IEnumerable<ErrorApp>> EditarUsuario(Usuario user);
+        Task<IEnumerable<ErrorBase>> CrearUsuario(Usuario user);
+        Task<IEnumerable<ErrorBase>> EditarUsuario(Usuario user);
         Task EliminarUsuario(int id);
     }
 }

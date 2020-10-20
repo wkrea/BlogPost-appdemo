@@ -62,8 +62,11 @@ node "App.Core" {
   }
 }
 
-
 node "App.Infra" {
+  package "Contexto"{
+    [AppDBSeedContext] ..> [AppDBContext] : extends
+    [AppDBContext] ..> () SqlServer : use
+  }
   package "Repositorios"{
     [ComentarioRepositorio] --(0- IComentarioRepositorio : implements
     [PostItemRepositorio] --(0- IPostItemRepositorio : implements
@@ -72,14 +75,8 @@ node "App.Infra" {
     [ComentarioRepositorio] ..> () AppDBContext : use
     [PostItemRepositorio] ..> () AppDBContext : use
     [UsuarioRepositorio] ..> () AppDBContext : use
-
-  }
-  package "Contexto"{
-    [AppDBSeedContext] ..> [AppDBContext] : extends
-    [AppDBContext] ..> () SqlServer : use
   }
 }
-
 
 database "SqlServer" {
   entity PostItem

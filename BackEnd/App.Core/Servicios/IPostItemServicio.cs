@@ -9,12 +9,12 @@ namespace App.Core.Servicios
     {
         Task<IEnumerable<PostItem>> ListarPostsItems();
         Task<PostItem> GetPostItemById(int id);
-        Task<IEnumerable<ErrorApp>> CrearPostItem(PostItem postItem);
-        Task<IEnumerable<ErrorApp>> EditarPostItem(PostItem postItem);
-        Task EliminarPostItem(int id);
+        Task<IEnumerable<ErrorBase>> CrearPostItem(PostItem postItem);
+        Task<IEnumerable<ErrorBase>> EditarPostItem(PostItem postItem);
+        Task<IEnumerable<ErrorBase>> EliminarPostItem(PostItem postItem);
 
         #region cruce PostItem-->Comentarios
-        Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comment);
+        Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comment);
         Task<IEnumerable<Comentario>> GetComentariosByPostItemId(int postId);
         #endregion
     }

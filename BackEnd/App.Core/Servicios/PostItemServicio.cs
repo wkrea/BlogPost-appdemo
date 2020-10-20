@@ -6,6 +6,7 @@ using App.Core.Dominio;
 using App.Core.Dominio.Errors;
 using App.Core.Interfaces;
 using App.Core.Servicios.Validadores;
+using Microsoft.AspNetCore.Http;
 
 namespace App.Core.Servicios
 {
@@ -36,11 +37,11 @@ namespace App.Core.Servicios
         {
             return await this.postItemRepositorio.BuscarXId(id);;
         }
-        public async Task<IEnumerable<ErrorApp>> CrearPostItem(PostItem postItem)
+        public async Task<IEnumerable<ErrorBase>> CrearPostItem(PostItem postItem)
         {
             postItem.CreadoFecha = DateTime.Now;
 
-            List<ErrorApp> errores = null;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 errores.AddRange(this.postValidator.Validar(postItem));
@@ -48,16 +49,15 @@ namespace App.Core.Servicios
             }
             catch
             {
-                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+                errores.Add(new ErrorBase(StatusCodes.Status500InternalServerError));
             }
             return errores;
         }
 
-        public async Task<IEnumerable<ErrorApp>> EditarPostItem(PostItem postItem)
+        public async Task<IEnumerable<ErrorBase>> EditarPostItem(PostItem postItem)
         {
-            postItem.ModificadoFecha = DateTime.Now;
-
-            List<ErrorApp> errores = null;
+            postItem.CreadoFecha = DateTime.Now;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 errores.AddRange(this.postValidator.Validar(postItem));
@@ -65,20 +65,30 @@ namespace App.Core.Servicios
             }
             catch
             {
-                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+                errores.Add(new ErrorBase(StatusCodes.Status500InternalServerError));
             }
             return errores;
         }
 
-        public Task EliminarPostItem(int id)
+        public async Task<IEnumerable<ErrorBase>> EliminarPostItem(PostItem postItem)
         {
-            throw new NotImplementedException();
+            List<ErrorBase> errores = null;
+            try
+            {
+                errores.AddRange(this.postValidator.Validar(postItem));
+                await this.postItemRepositorio.Eliminar(postItem);
+            }
+            catch
+            {
+                errores.Add(new ErrorBase(StatusCodes.Status500InternalServerError));
+            }
+            return errores;
         }
 
-        public async Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comentario)
+        public async Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comentario)
         {
             comentario.CreadoFecha = DateTime.Now;
-            List<ErrorApp> errores = null;
+            List<ErrorBase> errores = null;
             try
             {
                 errores.AddRange(this.comentarioValidator.Validar(comentario));
@@ -86,7 +96,7 @@ namespace App.Core.Servicios
             }
             catch
             {
-                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+                errores.Add(new ErrorBase(StatusCodes.Status500InternalServerError));
             }
             return errores;
         }
