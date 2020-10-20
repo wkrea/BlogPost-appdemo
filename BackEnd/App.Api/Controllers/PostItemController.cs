@@ -37,7 +37,7 @@ namespace App.Api.Controllers
             var postItem = await this.postItemService.GetPostItemById(id);
             if (postItem == null)
             {
-                return NotFound();
+                return NotFound(new ErrorBase(404, $"Post con id {id} no fue encontrado"));
             }   
             return Ok(postItem);
         }
@@ -49,7 +49,7 @@ namespace App.Api.Controllers
             var comments = await this.postItemService.GetComentariosByPostItemId(id);
             if (comments == null)
             {
-                return NotFound();
+                return NotFound(new ErrorBase(404, $"Comentario con id {id} no fue encontrado"));
             }  
             return Ok(comments);
         }
@@ -58,18 +58,19 @@ namespace App.Api.Controllers
         #region POST
         [HttpPost]
         [ProducesResponseType(201)]
-        [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorApp>))]
+        [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorBase>))]
         public async Task<IActionResult> PostItemAsync(PostItemDTO postItem)
         {
-            if(!ModelState.IsValid) return BadRequest(ModelState);
+            if(!ModelState.IsValid) return BadRequest(new ApiBadRequestResponse(ModelState));
 
             var _postItem = postItem.ADominio();
 
-            var result = await this.postItemService.CrearPostItem(_postItem);
+            var errores = await this.postItemService.CrearPostItem(_postItem);
 
-            if (result.Count() > 0)
+            if (errores.Count() > 0)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, result);
+                // BadRequest(new ErrorBase(400, errores));
+                return StatusCode(StatusCodes.Status400BadRequest, errores);
             }
             return StatusCode(StatusCodes.Status201Created);
             // return CreatedAtAction("GetPostsItem", new {id=_postItem.Id}, postItem);
@@ -77,7 +78,7 @@ namespace App.Api.Controllers
 
         [HttpPost("{id}/comentario")]
         [ProducesResponseType(201)]
-        [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorApp>))]
+        [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorBase>))]
         public async Task<IActionResult> Comment(ComentarioDTO comentario, int id)
         {
             var _comment = comentario.ADominio();
@@ -97,7 +98,7 @@ namespace App.Api.Controllers
         #region PUT
         [HttpPut("{id}")]
         [ProducesResponseType(201)]
-        [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorApp>))]
+        [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorBase>))]
         public async Task<IActionResult> UpdatePostItem(int id, PostItem postItem)
         {
             if (postItem.Id != id)

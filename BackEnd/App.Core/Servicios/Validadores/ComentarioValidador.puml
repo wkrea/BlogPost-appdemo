@@ -2,7 +2,7 @@
 class ComentarioValidador {
     - postItemRepository : IPostItemRepositorio
     + ComentarioValidador(postItemRepository:IPostItemRepositorio)
-    + Validar(comentario:Comentario) : IEnumerable<ErrorApp>
+    + Validar(comentario:Comentario) : IEnumerable<ErrorBase>
 }
 "IValidadorServicio`1" "<Comentario>" <|-- ComentarioValidador
 @enduml

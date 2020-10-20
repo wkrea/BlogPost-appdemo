@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using App.Core.Dominio;
 using App.Core.Interfaces;
 using App.Core.Dominio.Errors;
+using Microsoft.AspNetCore.Http;
 
 namespace App.Core.Servicios
 {
@@ -25,30 +26,30 @@ namespace App.Core.Servicios
             var usuario = _userRepo.BuscarXId(id);
             return usuario;
         }
-        public async Task<IEnumerable<ErrorApp>> CrearUsuario(Usuario usuario)
+        public async Task<IEnumerable<ErrorBase>> CrearUsuario(Usuario usuario)
         {
-            List<ErrorApp> errores = null;
+            List<ErrorBase> errores = null;
             try
             {
                 await _userRepo.Crear(usuario);
             }
             catch
             {
-                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+                errores.Add(new ErrorBase(StatusCodes.Status500InternalServerError));
             }
             return errores;
         }
 
-        public async Task<IEnumerable<ErrorApp>> EditarUsuario(Usuario user)
+        public async Task<IEnumerable<ErrorBase>> EditarUsuario(Usuario user)
         {
-            List<ErrorApp> errores = null;
+            List<ErrorBase> errores = null;
             try
             {
                 await this._userRepo.Editar(user);
             }
             catch
             {
-                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+                errores.Add(new ErrorBase(StatusCodes.Status500InternalServerError));
             }
             return errores;
         }

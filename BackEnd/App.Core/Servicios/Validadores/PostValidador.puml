@@ -2,7 +2,7 @@
 class PostValidador {
     - userRepository : IUsuarioRepositorio
     + PostValidador(userRepository:IUsuarioRepositorio)
-    + Validar(postItem:PostItem) : IEnumerable<ErrorApp>
+    + Validar(postItem:PostItem) : IEnumerable<ErrorBase>
 }
 "IValidadorServicio`1" "<PostItem>" <|-- PostValidador
 @enduml

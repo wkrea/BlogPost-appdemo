@@ -2,10 +2,16 @@
 using App.Core.Dominio;
 using App.Core.Interfaces;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace App.Core.Servicios.Validadores
 {
+    /// <summary>
+    /// Clase que permite ejercer validaciones sobre 
+    /// los atributos de la clase Comentario
+    /// Y definir mensajes de error personalizados 
+    /// para cada código de error HTTP emitido desde la Api
+    /// </summary>
     public class ComentarioValidador : IValidadorServicio<Comentario>
     {
         private IPostItemRepositorio postItemRepository;
@@ -15,26 +21,26 @@ namespace App.Core.Servicios.Validadores
             this.postItemRepository = postItemRepository;
         }
 
-        public IEnumerable<ErrorApp> Validar(Comentario comentario)
+        public IEnumerable<ErrorBase> Validar(Comentario comentario)
         {
-            var ErrorApps = new List<ErrorApp>();
+            var ErrorBases = new List<ErrorBase>();
 
             if (postItemRepository.BuscarXId(comentario.PostId) == null)
             {
-                ErrorApps.Add(new ErrorApp { Mensaje = $"No existe PostId" });
+                ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"No existe PostId"));
             }
 
             if (string.IsNullOrEmpty(comentario?.Texto))
             {
-                ErrorApps.Add(new ErrorApp { Mensaje = $"{nameof(comentario)} no contiene texto" });
+                ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"{nameof(comentario)} no contiene texto"));
             }
 
             if (comentario.PostId <= 0)
             {
-                ErrorApps.Add(new ErrorApp { Mensaje = "PostId no válido" });
+                ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje: "PostId no válido"));
             }
 
-            return ErrorApps;
+            return ErrorBases;
         }
     }
 }

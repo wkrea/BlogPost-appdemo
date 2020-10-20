@@ -4,8 +4,8 @@ class UsuariosServicio {
     + UsuariosServicio(usuarioRepositorio:IUsuarioRepositorio)
     + <<async>> GetUsuarios() : Task<IEnumerable<Usuario>>
     + GetUsuario(id:int) : Task<Usuario>
-    + <<async>> CrearUsuario(usuario:Usuario) : Task<IEnumerable<ErrorApp>>
-    + <<async>> EditarUsuario(user:Usuario) : Task<IEnumerable<ErrorApp>>
+    + <<async>> CrearUsuario(usuario:Usuario) : Task<IEnumerable<ErrorBase>>
+    + <<async>> EditarUsuario(user:Usuario) : Task<IEnumerable<ErrorBase>>
     + <<async>> EliminarUsuario(id:int) : Task
 }
 IUsuarioServicio <|-- UsuariosServicio

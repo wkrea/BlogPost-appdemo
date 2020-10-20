@@ -7,10 +7,10 @@ class PostItemServicio {
     + PostItemServicio(postItemRepo:IPostItemRepositorio, comentarioRepo:IComentarioRepositorio, postValidator:PostValidador, comentarioValidator:ComentarioValidador)
     + <<async>> ListarPostsItems() : Task<IEnumerable<PostItem>>
     + <<async>> GetPostItemById(id:int) : Task<PostItem>
-    + <<async>> CrearPostItem(postItem:PostItem) : Task<IEnumerable<ErrorApp>>
-    + <<async>> EditarPostItem(postItem:PostItem) : Task<IEnumerable<ErrorApp>>
+    + <<async>> CrearPostItem(postItem:PostItem) : Task<IEnumerable<ErrorBase>>
+    + <<async>> EditarPostItem(postItem:PostItem) : Task<IEnumerable<ErrorBase>>
     + EliminarPostItem(id:int) : Task
-    + <<async>> CrearComentario(comentario:Comentario) : Task<IEnumerable<ErrorApp>>
+    + <<async>> CrearComentario(comentario:Comentario) : Task<IEnumerable<ErrorBase>>
     + GetComentariosByPostItemId(postId:int) : Task<IEnumerable<Comentario>>
 }
 IPostItemServicio <|-- PostItemServicio

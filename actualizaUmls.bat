@@ -9,7 +9,7 @@ for /R . %%I in (*.cs) do @"../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGene
 @REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Api/Controllers/UserController.cs
 
 @REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Compartido/EntidadBase.cs
-@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Errors/ErrorApp.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Errors/ErrorBase.cs
 
 @REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Comentario.cs
 @REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/PostItem.cs
