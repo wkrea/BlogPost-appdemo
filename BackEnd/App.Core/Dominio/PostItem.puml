@@ -1,0 +1,7 @@
+@startuml
+class PostItem {
+    + UserId : int <<get>> <<set>>
+    + Comentarios : IList<Comentario> <<get>> <<set>>
+}
+TextoItem <|-- PostItem
+@enduml

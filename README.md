@@ -55,7 +55,7 @@ o viceversa, según sea el caso de su preferencia.
 ### Visión General (appdemo)
 
 ```plantuml
-'!include ./Assets/Overview_appdemo.puml
+!include ./Assets/Overview_appdemo.puml
 ```
 
 ![Overview_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Overview_appdemo.puml)
@@ -65,6 +65,7 @@ o viceversa, según sea el caso de su preferencia.
 ```plantuml
 !include ./Assets/Detail_appdemo.puml
 ```
+
 <!-- 
 <iframe width="100%" height="500" src=http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Detail_appdemo.puml>
 ![Detail_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Detail_appdemo.puml)
@@ -76,3 +77,4 @@ o viceversa, según sea el caso de su preferencia.
 * [Component UML Diagrams Plantuml](https://real-world-plantuml.com/umls/4860331021041664)
 * [Proxy render UML](https://github.com/jonashackt/plantuml-markdown#2-integrate-plantuml-render-engine-with-github-markdown)
 * [plantuml-styles renders](https://github.com/wkrea/plantuml-styles)
+* [repository-pattern-csharp](https://codewithshadman.com/repository-pattern-csharp/)

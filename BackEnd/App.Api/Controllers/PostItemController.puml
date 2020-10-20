@@ -1,0 +1,14 @@
+@startuml
+class PostItemController {
+    - postItemService : IPostItemServicio
+    + PostItemController(postItemService:IPostItemServicio)
+    + <<async>> GetAllPostsItems() : Task<IActionResult>
+    + <<async>> GetPostsItem(id:int) : Task<IActionResult>
+    + <<async>> GetComments(id:int) : Task<IActionResult>
+    + <<async>> PostItemAsync(postItem:PostItemDTO) : Task<IActionResult>
+    + <<async>> Comment(comentario:ComentarioDTO, id:int) : Task<IActionResult>
+    + <<async>> UpdatePostItem(id:int, postItem:PostItem) : Task<IActionResult>
+    + <<async>> DeletePostItem(id:int) : Task<IActionResult>
+}
+ControllerBase <|-- PostItemController
+@enduml

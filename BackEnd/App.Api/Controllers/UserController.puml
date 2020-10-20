@@ -1,0 +1,11 @@
+@startuml
+class UsersController {
+    - usersService : IUsuarioServicio
+    + UsersController(usersService:IUsuarioServicio)
+    + <<async>> GetUsers() : Task<IActionResult>
+    + <<async>> GetUser(id:int) : Task<IActionResult>
+    + <<async>> CreateUser(user:Usuario) : Task<IActionResult>
+    + <<async>> DeletePostItem(id:int) : Task<IActionResult>
+}
+ControllerBase <|-- UsersController
+@enduml
