@@ -28,7 +28,7 @@ namespace App.Core.Servicios
         }
         public async Task<IEnumerable<ErrorBase>> CrearUsuario(Usuario usuario)
         {
-            List<ErrorBase> errores = null;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 await _userRepo.Crear(usuario);
@@ -42,7 +42,7 @@ namespace App.Core.Servicios
 
         public async Task<IEnumerable<ErrorBase>> EditarUsuario(Usuario user)
         {
-            List<ErrorBase> errores = null;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 await this._userRepo.Editar(user);

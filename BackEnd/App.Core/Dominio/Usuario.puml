@@ -1,7 +1,0 @@
-@startuml
-class Usuario {
-    + Email : string <<get>> <<set>>
-    + UserName : string <<get>> <<set>>
-}
-EntidadBase <|-- Usuario
-@enduml

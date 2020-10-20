@@ -1,6 +1,0 @@
-@startuml
-class ErrorBase {
-    + Mensaje : string <<get>> <<set>>
-    + ErrorBase()
-}
-@enduml

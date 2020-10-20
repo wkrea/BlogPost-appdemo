@@ -1,9 +1,0 @@
-@startuml
-interface IUsuarioServicio {
-    GetUsuarios() : Task<IEnumerable<Usuario>>
-    GetUsuario(id:int) : Task<Usuario>
-    CrearUsuario(user:Usuario) : Task<IEnumerable<ErrorBase>>
-    EditarUsuario(user:Usuario) : Task<IEnumerable<ErrorBase>>
-    EliminarUsuario(id:int) : Task
-}
-@enduml

@@ -1,11 +1,10 @@
-﻿using App.Core.Interfaces;
+﻿using App.Core.Dominio.Errors;
+using App.Core.Interfaces;
 using App.Core.Servicios;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace App.Test.Servicios
@@ -43,10 +42,10 @@ namespace App.Test.Servicios
             var postItem = new Core.Dominio.PostItem { Texto = "Texto de Post Prueba", UserId = 1 };
 
             // Act
-            var errors = await this.postItemSrvTest.CrearPostItem(postItem);
+            IEnumerable<ErrorBase> response = await this.postItemSrvTest.CrearPostItem(postItem);
 
             // Assert
-            Assert.IsFalse(errors.Any());
+            Assert.IsTrue(response.Count().Equals(0));
         }
 
         [TestMethod]
@@ -56,11 +55,11 @@ namespace App.Test.Servicios
             var postItem = new Core.Dominio.PostItem { Texto = "Texto de un usuario no registrado", UserId = 2 };
 
             // Act
-            var errors = await this.postItemSrvTest.CrearPostItem(postItem);
+            var response = await this.postItemSrvTest.CrearPostItem(postItem);
 
             // Assert
-            var val = errors.Any();
-            Assert.IsTrue(val);
+            Assert.IsTrue(!response.Count().Equals(0));
+            // Assert.IsTrue(val);
         }
     }
 }

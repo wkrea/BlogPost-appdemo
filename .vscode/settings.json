@@ -1,3 +1,4 @@
 {
-  "cSpell.language": ",es"
+  "cSpell.language": ",es",
+  "dotnet-test-explorer.testProjectPath":"./BackEnd/App.Test/*Test.@(csproj|vbproj|fsproj)"
 }

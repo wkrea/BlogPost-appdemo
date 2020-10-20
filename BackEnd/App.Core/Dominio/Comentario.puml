@@ -1,6 +1,0 @@
-@startuml
-class Comentario {
-    + PostId : int <<get>> <<set>>
-}
-TextoItem <|-- Comentario
-@enduml

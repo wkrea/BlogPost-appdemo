@@ -1,5 +1,5 @@
 
-DEL /S /Q ./BackEnd/*.puml
+DEL /S /Q ".\BackEnd\*.puml"
 for /R . %%I in (*.cs) do @"../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe" "%%I"
 
 @REM ###################################################################################################

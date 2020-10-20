@@ -41,7 +41,7 @@ namespace App.Core.Servicios
         {
             postItem.CreadoFecha = DateTime.Now;
 
-            List<ErrorBase> errores = null;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 errores.AddRange(this.postValidator.Validar(postItem));
@@ -56,9 +56,8 @@ namespace App.Core.Servicios
 
         public async Task<IEnumerable<ErrorBase>> EditarPostItem(PostItem postItem)
         {
-            postItem.ModificadoFecha = DateTime.Now;
-
-            List<ErrorBase> errores = null;
+            postItem.CreadoFecha = DateTime.Now;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 errores.AddRange(this.postValidator.Validar(postItem));
