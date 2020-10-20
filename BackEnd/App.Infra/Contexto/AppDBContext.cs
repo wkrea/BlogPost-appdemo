@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using App.Core.Dominio;
+﻿using App.Core.Dominio;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Infra.Contexto
 {
     public class AppDBContext : DbContext
     {
-        public AppDBContext(DbContextOptions<AppDBContext> options)
-        : base(options)
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
             Database.EnsureCreated(); // Just for test
         }

@@ -11,7 +11,7 @@ namespace App.Core.Servicios
         Task<PostItem> GetPostItemById(int id);
         Task<IEnumerable<ErrorApp>> CrearPostItem(PostItem postItem);
         Task<IEnumerable<ErrorApp>> EditarPostItem(PostItem postItem);
-        Task EliminarPostItem(int id);
+        Task<IEnumerable<ErrorApp>> EliminarPostItem(PostItem postItem);
 
         #region cruce PostItem-->Comentarios
         Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comment);

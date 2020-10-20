@@ -70,9 +70,19 @@ namespace App.Core.Servicios
             return errores;
         }
 
-        public Task EliminarPostItem(int id)
+        public async Task<IEnumerable<ErrorApp>> EliminarPostItem(PostItem postItem)
         {
-            throw new NotImplementedException();
+            List<ErrorApp> errores = null;
+            try
+            {
+                errores.AddRange(this.postValidator.Validar(postItem));
+                await this.postItemRepositorio.Eliminar(postItem);
+            }
+            catch
+            {
+                errores.Add(new ErrorApp { Mensaje = "Ocurrió un error al guardar el dato en el servidor" });
+            }
+            return errores;
         }
 
         public async Task<IEnumerable<ErrorApp>> CrearComentario(Comentario comentario)

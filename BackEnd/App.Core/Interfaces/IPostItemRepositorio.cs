@@ -9,7 +9,7 @@ namespace App.Core.Interfaces
         Task GuardarContext();
         Task<IEnumerable<PostItem>> Listar();
         Task Crear(PostItem postItem);
-        Task Eliminar(int id);
+        Task Eliminar(PostItem postItem);
         Task Editar(PostItem postItem);
         Task<PostItem> BuscarXId(int Id);
         Task<bool> postExiste(int id);

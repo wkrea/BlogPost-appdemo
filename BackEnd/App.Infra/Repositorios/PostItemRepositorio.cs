@@ -46,13 +46,10 @@ namespace App.Infra.Repositorios
             await this.GuardarContext();
         }
 
-        public async Task Eliminar(int id)
+        public async Task Eliminar(PostItem item)
         {
-            PostItem item = await _context.PostItems.FindAsync(id);
-            if(item != null){
-                _context.PostItems.Remove(item);
-                await this.GuardarContext();
-            }
+            _context.PostItems.Remove(item);
+            await this.GuardarContext();
         }
 
         public async Task<PostItem> BuscarXId(int id) => await _context.FindAsync<PostItem>(id);
