@@ -35,6 +35,10 @@ namespace App.Api.Controllers
         public async Task<IActionResult> GetPostsItem(int id)
         {
             var postItem = await this.postItemService.GetPostItemById(id);
+            if (postItem == null)
+            {
+                return NotFound();
+            }   
             return Ok(postItem);
         }
 
@@ -43,6 +47,10 @@ namespace App.Api.Controllers
         public async Task<IActionResult> GetComments(int id)
         {
             var comments = await this.postItemService.GetComentariosByPostItemId(id);
+            if (comments == null)
+            {
+                return NotFound();
+            }  
             return Ok(comments);
         }
         #endregion
@@ -53,6 +61,8 @@ namespace App.Api.Controllers
         [ProducesResponseType(400, Type = typeof(IEnumerable<ErrorApp>))]
         public async Task<IActionResult> PostItemAsync(PostItemDTO postItem)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var _postItem = postItem.ADominio();
 
             var result = await this.postItemService.CrearPostItem(_postItem);
@@ -61,8 +71,8 @@ namespace App.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, result);
             }
-
             return StatusCode(StatusCodes.Status201Created);
+            // return CreatedAtAction("GetPostsItem", new {id=_postItem.Id}, postItem);
         }
 
         [HttpPost("{id}/comentario")]
@@ -80,6 +90,7 @@ namespace App.Api.Controllers
             }
 
             return StatusCode(StatusCodes.Status201Created);
+            // return CreatedAtAction("GetComments", new {id=_comment.PostId}, _comment);
         }
         #endregion
 
@@ -107,7 +118,7 @@ namespace App.Api.Controllers
                     return StatusCode(StatusCodes.Status400BadRequest, result);
                 }
             }
-            return StatusCode(StatusCodes.Status201Created);
+            return StatusCode(StatusCodes.Status202Accepted);
         }
         #endregion
 
@@ -115,8 +126,20 @@ namespace App.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePostItem(int id)
         {
-            await this.postItemService.EliminarPostItem(id);
-            return Ok();
+            var existe = await this.postItemService.GetPostItemById(id);
+            if (existe == null)
+            {
+                NotFound();
+            }
+            else
+            {
+                var result = await this.postItemService.EliminarPostItem(existe);
+                if (result.Count() > 0)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, result);
+                }
+            }
+            return StatusCode(StatusCodes.Status200OK);
         }
         #endregion
     }
