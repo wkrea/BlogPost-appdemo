@@ -1,0 +1,5 @@
+@startuml
+interface "IValidadorServicio`1"<T> {
+    Validar(entity:T) : IEnumerable<ErrorApp>
+}
+@enduml

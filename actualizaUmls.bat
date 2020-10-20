@@ -1,36 +1,43 @@
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Api/Controllers/PostItemController.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Api/Controllers/UserController.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Compartido/EntidadBase.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Errors/ErrorApp.cs
+DEL /S /Q ./BackEnd/*.puml
+for /R . %%I in (*.cs) do @"../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe" "%%I"
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Comentario.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/PostItem.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/TextoItem.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Usuario.cs
+@REM ###################################################################################################
+@REM Esta era la version manual
+@REM ###################################################################################################
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Api/Controllers/PostItemController.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Api/Controllers/UserController.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/DTO/DtoMapper.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/DTO/Command/ComentarioDTO.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/DTO/Command/PostItemDTO.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Compartido/EntidadBase.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Errors/ErrorApp.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Interfaces/IComentarioRepositorio
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Interfaces/IPostItemRepositorio
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Interfaces/IUsuarioRepositorio
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Comentario.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/PostItem.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/TextoItem.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Dominio/Usuario.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/Validadores/PostValidador.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/Validadores/ComentarioValidador.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/Validadores/IValidadorServicio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/DTO/DtoMapper.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/DTO/Command/ComentarioDTO.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/DTO/Command/PostItemDTO.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/IPostItemServicio
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/IUsuarioServicio
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/PostItemServicio
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/UsuariosServicio
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Interfaces/IComentarioRepositorio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Interfaces/IPostItemRepositorio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Interfaces/IUsuarioRepositorio.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Contexto/AppDBContext.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Contexto/AppDBSeedData.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/Validadores/PostValidador.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/Validadores/ComentarioValidador.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/Validadores/IValidadorServicio.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Repositorio/ComentarioRepositorio.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Repositorio/PostItemRepositorio.cs
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Repositorio/UsuarioRepositorio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/IPostItemServicio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/IUsuarioServicio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/PostItemServicio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Core/Servicios/UsuariosServicio.cs
 
-START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Test/Servicios/PostItemServicioTests.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Contexto/AppDBContext.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Contexto/AppDBSeedData.cs
+
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Repositorios/ComentarioRepositorio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Repositorios/PostItemRepositorio.cs
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Infra/Repositorios/UsuarioRepositorio.cs
+
+@REM START /wait ../PlantUml-C#/PlantUml-gen/PlantUmlClassDiagramGenerator.exe ./BackEnd/App.Test/Servicios/PostItemServicioTests.cs

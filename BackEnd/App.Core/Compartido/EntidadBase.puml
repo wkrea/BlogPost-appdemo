@@ -1,0 +1,5 @@
+@startuml
+abstract class EntidadBase {
+    + <<virtual>> Id : int <<get>> <<set>>
+}
+@enduml

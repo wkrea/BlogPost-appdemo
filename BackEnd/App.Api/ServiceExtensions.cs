@@ -15,8 +15,8 @@ namespace App.Api
         {
             var connectionString = config["sqlconnection:connectionString"];
             var optionsBuilder = new DbContextOptionsBuilder<AppDBContext>();
-            // optionsBuilder.UseSqlServer(connectionString); // SqlServer
-            optionsBuilder.UseInMemoryDatabase("db_memoria"); // En memoria
+            optionsBuilder.UseSqlServer(connectionString); // SqlServer
+            // optionsBuilder.UseInMemoryDatabase("db_memoria"); // En memoria
             var context = new AppDBContext(optionsBuilder.Options);
             services.AddSingleton<IPostItemRepositorio>(new PostItemRepositorio(context));
             services.AddSingleton<IComentarioRepositorio>(new ComentarioRepositorio(context));
