@@ -1,0 +1,7 @@
+@startuml
+class ApiBadRequestResponse {
+    + Errores : IEnumerable<string> <<get>>
+    + ApiBadRequestResponse(modelState:ModelStateDictionary)
+}
+ErrorBase <|-- ApiBadRequestResponse
+@enduml

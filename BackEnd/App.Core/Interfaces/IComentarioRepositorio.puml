@@ -1,0 +1,11 @@
+@startuml
+interface IComentarioRepositorio {
+    GuardarContext() : Task
+    Listar() : Task<IEnumerable<Comentario>>
+    Crear(comment:Comentario) : Task
+    Eliminar(id:int) : Task
+    Editar(comment:Comentario) : Task
+    BuscarXId(Id:int) : Task<Comentario>
+    BuscarPostXId(postId:int) : Task<IEnumerable<Comentario>>
+}
+@enduml

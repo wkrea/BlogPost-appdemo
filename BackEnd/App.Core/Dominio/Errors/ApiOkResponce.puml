@@ -1,0 +1,7 @@
+@startuml
+class ApiOkResponse {
+    + response : object <<get>>
+    + ApiOkResponse(resultado:object)
+}
+ErrorBase <|-- ApiOkResponse
+@enduml

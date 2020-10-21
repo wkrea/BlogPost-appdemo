@@ -1,0 +1,8 @@
+@startuml
+class ErrorBase {
+    + StatusCode : int <<get>>
+    + Mensaje : string <<get>> <<set>>
+    + ErrorBase(statusCode:int, mensaje:string)
+    - {static} getMensajePersonalizado(statusCode:int) : string
+}
+@enduml

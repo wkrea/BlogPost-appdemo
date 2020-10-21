@@ -1,0 +1,9 @@
+@startuml
+class AppDBContext {
+    + AppDBContext(options:DbContextOptions<AppDBContext>)
+    + Usuarios : DbSet<Usuario> <<get>> <<set>>
+    + PostItems : DbSet<PostItem> <<get>> <<set>>
+    + Comentarios : DbSet<Comentario> <<get>> <<set>>
+}
+DbContext <|-- AppDBContext
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+class PostItemRepositorio {
+    - _context : AppDBContext
+    + PostItemRepositorio(AppDBContext:AppDBContext)
+    + <<async>> GuardarContext() : Task
+    + <<async>> Listar() : Task<IEnumerable<PostItem>>
+    + <<async>> Crear(postItem:PostItem) : Task
+    + <<async>> Editar(postItem:PostItem) : Task
+    + <<async>> Eliminar(item:PostItem) : Task
+    + <<async>> BuscarXId(id:int) : Task<PostItem>
+    + <<async>> postExiste(id:int) : Task<bool>
+}
+IPostItemRepositorio <|-- PostItemRepositorio
+@enduml

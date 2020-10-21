@@ -1,0 +1,11 @@
+@startuml
+interface IPostItemRepositorio {
+    GuardarContext() : Task
+    Listar() : Task<IEnumerable<PostItem>>
+    Crear(postItem:PostItem) : Task
+    Eliminar(postItem:PostItem) : Task
+    Editar(postItem:PostItem) : Task
+    BuscarXId(Id:int) : Task<PostItem>
+    postExiste(id:int) : Task<bool>
+}
+@enduml

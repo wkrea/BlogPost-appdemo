@@ -1,0 +1,12 @@
+@startuml
+class UsuariosServicio {
+    - _userRepo : IUsuarioRepositorio
+    + UsuariosServicio(usuarioRepositorio:IUsuarioRepositorio)
+    + <<async>> GetUsuarios() : Task<IEnumerable<Usuario>>
+    + GetUsuario(id:int) : Task<Usuario>
+    + <<async>> CrearUsuario(usuario:Usuario) : Task<IEnumerable<ErrorBase>>
+    + <<async>> EditarUsuario(user:Usuario) : Task<IEnumerable<ErrorBase>>
+    + <<async>> EliminarUsuario(id:int) : Task
+}
+IUsuarioServicio <|-- UsuariosServicio
+@enduml
