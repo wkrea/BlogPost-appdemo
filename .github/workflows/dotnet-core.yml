@@ -61,11 +61,11 @@ jobs:
     #    #ls ./
     #    ls ${{github.workspace}}/BackEnd/App.Test/TestResults
     
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
+    #- name: Coveralls
+    #  uses: coverallsapp/github-action@master
+    #  with:
+    #    github-token: ${{ secrets.GITHUB_TOKEN }}
+    #    path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
 
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
