@@ -51,15 +51,15 @@ jobs:
 
     #     dotnet test --no-restore --verbosity normal --no-build --configuration Release --logger:"liquid.md;LogFileName=test;Title=test #1;" ./App.Test.csproj
 
-    - name: Generate coverage report
-      run: |
-        cd ./App.Test/
-        dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
+    #- name: Generate coverage report
+    #  run: |
+    #    cd ./App.Test/
+    #    dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
     
-    - name: Content list
-      run: |
-        #ls ./
-        ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+    #- name: Content list
+    #  run: |
+    #    #ls ./
+    #    ls ${{github.workspace}}/BackEnd/App.Test/TestResults
     
     - name: Coveralls
       uses: coverallsapp/github-action@master
