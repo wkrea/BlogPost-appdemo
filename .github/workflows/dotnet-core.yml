@@ -74,10 +74,10 @@ jobs:
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: 476b69d6abdd41009c2aab49ba639f8f3a61516f
       with:
-        projectBaseDir: ./App.Test/
+        projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
         args: >
-          -Dsonar.organization=my-organization
-          -Dsonar.projectKey=my-projectkey
+          -Dsonar.organization=wkrea
+          -Dsonar.projectKey=appdemo
           -Dsonar.python.coverage.reportPaths=coverage.xml
           -Dsonar.sources=lib/
           -Dsonar.test.exclusions=tests/**
