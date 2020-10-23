@@ -68,16 +68,29 @@ jobs:
     #    github-token: ${{ secrets.GITHUB_TOKEN }}
     #    path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
 
-    - name: SonarCloud Scan
+    - name: SonarCloud Scan AppDemo.Api
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: 476b69d6abdd41009c2aab49ba639f8f3a61516f
       with:
-        projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
+        projectBaseDir: ${{github.workspace}}/BackEnd/App.Api/
         args: >
           -Dsonar.organization=wkrea
           -Dsonar.projectKey=appdemo
+          -Dsonar.verbose=true
+          -Dsonar.python.coverage.reportPaths=coverage.xml
+
+    - name: SonarCloud Scan AppDemo.Core
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: 2139a65008319af0f53c1e6f66d964565bb04c64 
+      with:
+        projectBaseDir: ${{github.workspace}}/BackEnd/App.Core/
+        args: >
+          -Dsonar.organization=wkrea
+          -Dsonar.projectKey=AppDemo.Core
           -Dsonar.verbose=true
           -Dsonar.python.coverage.reportPaths=coverage.xml
         #-Dsonar.sources=lib/
