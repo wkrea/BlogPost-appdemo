@@ -56,10 +56,10 @@ jobs:
     #    cd ./App.Test/
     #    dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
     
-    #- name: Content list
-    #  run: |
-    #    #ls ./
-    #    ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+    - name: Content list
+      run: |
+        #ls ./
+        ls ${{github.workspace}}/BackEnd/App.Test/TestResults
     
     #- name: Coveralls
     #  uses: coverallsapp/github-action@master
