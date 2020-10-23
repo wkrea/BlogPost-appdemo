@@ -80,9 +80,9 @@ jobs:
           -Dsonar.projectKey=appdemo
           -Dsonar.verbose=true
           -Dsonar.python.coverage.reportPaths=coverage.xml
-          #-Dsonar.sources=lib/
-          #-Dsonar.test.exclusions=tests/**
-          #-Dsonar.tests=tests/
+        #-Dsonar.sources=lib/
+        #-Dsonar.test.exclusions=tests/**
+        #-Dsonar.tests=tests/
        
           
         
