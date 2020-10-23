@@ -59,7 +59,8 @@ jobs:
     - name: Content list
       run: |
         #ls ./
-        ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+        #ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+        ls ${{github.workspace}}
     
     #- name: Coveralls
     #  uses: coverallsapp/github-action@master
