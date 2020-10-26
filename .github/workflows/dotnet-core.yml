@@ -73,13 +73,14 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@v1.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: 3dd488c47c93f729ba16e53d04c405f39614872f
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
         args: >
           -Dsonar.organization=wkrea
           -Dsonar.projectKey=wkrea_appdemo
           -Dsonar.verbose=true
+          -Dsonar.sources=./BackEnd/App.Api/
           -Dsonar.python.coverage.reportPaths=coverage.xml
        
         
