@@ -10,6 +10,7 @@ Este proyecto está pensado para acoger la lógica de negocio y la construcción
 * AppDBSeedData
 
 ### AppDBContexto
+
 ```plantuml
 package App.Infra{
   namespace App.Infra.Contexto #DDDDDD{

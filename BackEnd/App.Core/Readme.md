@@ -1,11 +1,12 @@
+# Dependencias
 
-## Dependencias
+Aquí se presentan los Nuggets instalados sobre el proyecto.
 
-### Soporte para validaciones de modelo MVC (ModelState)
+## Soporte para validaciones de modelo MVC (ModelState)
 
 + dotnet add package Microsoft.AspNetCore.Mvc
 
-### Soporte para manejo de códigos de error HTTP
+## Soporte para manejo de códigos de error HTTP
 
 + dotnet add package Microsoft.AspNetCore.Http
 
@@ -50,7 +51,7 @@ pandoc -s --from markdown --filter pandoc-plantuml --filter pandoc-citeproc --fi
  pandoc -s --from markdown --filter pandoc-plantuml --filter pandoc-citeproc --filter pandoc-crossref --pdf-engine=pdflatex --template C:/Users/asus/AppData/Local/Pandoc/templates/eisvogel/eisvogel.tex --listings -o example.pdf
 ```
 
-# Referencias
+## Referencias
 
 * BackEnd/PlantUml-gen/PlantUmlClassDiagramGenerator.exe BackEnd/App.Core/Interfaces/IComentarioRepositorio.cs
 * BackEnd/PlantUml-gen/PlantUmlClassDiagramGenerator.exe BackEnd/App.Core/Interfaces/IPostItemRepositorio.cs
