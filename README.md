@@ -1,4 +1,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/wkrea/appdemo/badge.svg?branch=main)](https://coveralls.io/github/wkrea/appdemo?branch=main)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=coverage)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
+
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=code_smells)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
 
 # appdemo
 
