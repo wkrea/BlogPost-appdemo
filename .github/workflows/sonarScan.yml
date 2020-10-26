@@ -31,6 +31,21 @@
         - name: Clone Repository
           uses: actions/checkout@v2
 
+        - name: Ejecutar Tests
+          run: |
+            dotnet restore ./App.Test/
+            dotnet test --no-restore --verbosity normal --no-build --configuration $config \
+            --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};" \
+            ./App.Test/App.Test.csproj
+
+            dotnet test --no-restore --verbosity normal --no-build --configuration Release --logger:"liquid.md;LogFileName=test;Title=test #1;" ./App.Test.csproj
+
+        - name: Generate coverage report
+          run: |
+            cd ./App.Test/
+            dotnet restore
+            dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
+
         - name: Content list
           run: |
             #ls ./
