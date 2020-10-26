@@ -47,6 +47,7 @@
           #uses: sonarsource/sonarcloud-github-action@master
           uses: sonarsource/sonarcloud-github-action@v1.3
           env:
+            # 4358935f69b117323c8f8d43ea2b0598544f28d3
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           with:
