@@ -1,6 +1,6 @@
 # App.Test
 
-Este proyecto está pensado para Implementar patrones de prueba sobre los proyectos 
+Este proyecto está pensado para Implementar patrones de prueba sobre los proyectos.
 
 ## [App.Api](#ref:App.Api)
 
