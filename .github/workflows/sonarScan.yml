@@ -31,11 +31,6 @@
         - name: Clone Repository
           uses: actions/checkout@v2
 
-        - name: Ejecutar Tests
-          run: |
-            dotnet restore ${{github.workspace}}/BackEnd/App.Test/
-            dotnet test --no-restore --verbosity normal --no-build --configuration Release --logger:"liquid.md;LogFileName=test;Title=test #1;" ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj
-
         - name: Generate coverage report
           run: |
             cd ${{github.workspace}}/BackEnd/App.Test/
