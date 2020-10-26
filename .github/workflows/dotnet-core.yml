@@ -72,7 +72,7 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: 476b69d6abdd41009c2aab49ba639f8f3a61516f
+        SONAR_TOKEN: 3dd488c47c93f729ba16e53d04c405f39614872f
       with:
         projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
         args: >
