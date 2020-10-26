@@ -34,14 +34,8 @@
         - name: Content list
           run: |
             #ls ./
-            #ls ${{github.workspace}}/BackEnd/App.Test/TestResults
-            ls ${{github.workspace}}
-
-        - name: Coveralls
-          uses: coverallsapp/github-action@master
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
+            ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+            #ls ${{github.workspace}}
 
         - name: SonarCloud Scan AppDemo
           uses: sonarsource/sonarcloud-github-action@master

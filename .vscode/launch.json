@@ -6,11 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/BackEnd/App.Test/bin/Debug/netcoreapp3.1/App.Test.dll",
             "args": [],
             "cwd": "${workspaceFolder}/BackEnd/App.Test",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
