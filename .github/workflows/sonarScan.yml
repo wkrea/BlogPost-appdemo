@@ -49,13 +49,13 @@
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          with:
-            projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
-            args: >
-              -Dsonar.verbose=true
-              -Dsonar.sources=./BackEnd/App.Api/
-              -Dsonar.python.coverage.reportPaths=coverage.xml
+          # with:
+          #   projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
+          #   args: >
+          #     -Dsonar.verbose=true
+          #     -Dsonar.sources=./BackEnd/App.Api/
+          #     -Dsonar.python.coverage.reportPaths=coverage.xml
 
-          # -Dsonar.organization=wkrea
-          # -Dsonar.projectKey=wkrea_appdemo
+          # # -Dsonar.organization=wkrea
+          # # -Dsonar.projectKey=wkrea_appdemo
  
