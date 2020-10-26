@@ -36,10 +36,6 @@
             dotnet restore ${{github.workspace}}/BackEnd/App.Test/
             dotnet test --no-restore --verbosity normal --no-build --configuration Release --logger:"liquid.md;LogFileName=test;Title=test #1;" ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj
 
-          # dotnet test --no-restore --verbosity normal --no-build --configuration $config \
-          # --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};" \
-          # ${{github.workspace}}/BackEnd/App.Test/App.Test.csproj
-
         - name: Generate coverage report
           run: |
             cd ${{github.workspace}}/BackEnd/App.Test/
