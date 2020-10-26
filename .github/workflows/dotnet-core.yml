@@ -77,7 +77,7 @@ jobs:
         projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
         args: >
           -Dsonar.organization=wkrea
-          -Dsonar.projectKey=appdemo
+          -Dsonar.projectKey=wkrea_appdemo
           -Dsonar.verbose=true
           -Dsonar.python.coverage.reportPaths=coverage.xml
        
