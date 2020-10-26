@@ -1,0 +1,60 @@
+---
+  ###########################
+  ###########################
+  ## Linter GitHub Actions ##
+  ###########################
+  ###########################
+  name: SonarCloud Scan
+  
+  #
+  # Documentation:
+  # https://help.github.com/en/articles/workflow-syntax-for-github-actions
+  #
+  
+  #############################
+  # Start the job on all push #
+  #############################
+  on:
+    push:
+      branches:
+        - "main"
+        - "feature*"
+  
+  ###############
+  # Set the Job #
+  ###############
+  jobs:
+    sonarCloudTrigger:
+      name: SonarCloud Trigger
+      runs-on: ubuntu-latest
+      steps:
+        - name: Clone Repository
+          uses: actions/checkout@v2
+
+        - name: Content list
+        run: |
+          #ls ./
+          #ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+          ls ${{github.workspace}}
+
+        #- name: Coveralls
+        #  uses: coverallsapp/github-action@master
+        #  with:
+        #    github-token: ${{ secrets.GITHUB_TOKEN }}
+        #    path-to-lcov: ${{github.workspace}}/BackEnd/App.Test/TestResults/coverage.info 
+
+        - name: SonarCloud Scan AppDemo
+        #uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@v1.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: ${{github.workspace}}/BackEnd/App.Test/
+          args: >
+            -Dsonar.organization=wkrea
+            -Dsonar.projectKey=wkrea_appdemo
+            -Dsonar.verbose=true
+            -Dsonar.sources=./BackEnd/App.Api/
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+ 
