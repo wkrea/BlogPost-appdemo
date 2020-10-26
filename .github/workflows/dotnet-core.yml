@@ -22,9 +22,9 @@
         with:
           dotnet-version: 3.1.401
       - name: Restaurar dependencias
-      run: dotnet restore ./App.Api/
+        run: dotnet restore ./App.Api/
       - name: Construir Aplicación
-      run: dotnet build --configuration Release --no-restore ./App.Api/App.Api.csproj
+        run: dotnet build --configuration Release --no-restore ./App.Api/App.Api.csproj
 
       # - name: Elegir \#Build para el PR (if pr)
       #   id: PRNUMBER
@@ -53,10 +53,10 @@
       #     dotnet test --no-restore --verbosity normal --no-build --configuration Release --logger:"liquid.md;LogFileName=test;Title=test #1;" ./App.Test.csproj
 
       - name: Generate coverage report
-      run: |
-        cd ./App.Test/
-        dotnet restore
-        dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
+        run: |
+          cd ./App.Test/
+          dotnet restore
+          dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
       
 
       
