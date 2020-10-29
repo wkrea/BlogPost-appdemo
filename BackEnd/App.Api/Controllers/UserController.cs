@@ -16,12 +16,12 @@ namespace App.Api.Controllers
         }
 
         #region  GET
-        // [HttpGet]
-        // public async Task<IActionResult> GetUsers()
-        // {
-        //     var users = await this.usersService.GetUsuarios();
-        //     return Ok(users);
-        // }
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            var users = await this.usersService.GetUsuarios();
+            return Ok(users);
+        }
 
         // [HttpGet("{id}")]
         // public async Task<IActionResult> GetUser(int id)
