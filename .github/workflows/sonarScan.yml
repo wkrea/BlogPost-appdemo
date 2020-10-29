@@ -56,7 +56,7 @@
             args: >
               -Dsonar.organization=wkrea
               -Dsonar.projectKey=wkrea_appdemo
-              -Dsonar.verbose=true
+              -Dsonar.verbose=false
               -Dsonar.sources=./BackEnd/App.Api/
               -Dsonar.python.coverage.reportPaths=coverage.xml
 
