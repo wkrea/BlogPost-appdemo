@@ -35,7 +35,8 @@ namespace App.Test.Accesorios
 
             builder.ConfigureTestServices(services =>
             {
-                services.AddTransient<IPostItemServicio, PostServiceStub>();
+                // services.AddTransient<IPostItemServicio, PostServiceStub>();
+                services.AddTransient<IPostItemServicio, PostItemServicio>();
             });
         }
     }
