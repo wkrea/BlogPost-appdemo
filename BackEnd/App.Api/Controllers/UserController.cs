@@ -16,40 +16,40 @@ namespace App.Api.Controllers
         }
 
         #region  GET
-        [HttpGet]
-        public async Task<IActionResult> GetUsers()
-        {
-            var users = await this.usersService.GetUsuarios();
-            return Ok(users);
-        }
+        // [HttpGet]
+        // public async Task<IActionResult> GetUsers()
+        // {
+        //     var users = await this.usersService.GetUsuarios();
+        //     return Ok(users);
+        // }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
-        {
-            var user = await this.usersService.GetUsuario(id);
-            return Ok(user);
-        }
-        #endregion
+        // [HttpGet("{id}")]
+        // public async Task<IActionResult> GetUser(int id)
+        // {
+        //     var user = await this.usersService.GetUsuario(id);
+        //     return Ok(user);
+        // }
+        // #endregion
 
-        #region POST
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(Usuario user)
-        {
-            await this.usersService.CrearUsuario(user);
-            return StatusCode(201);
-        }
-        #endregion
+        // #region POST
+        // [HttpPost]
+        // public async Task<IActionResult> CreateUser(Usuario user)
+        // {
+        //     await this.usersService.CrearUsuario(user);
+        //     return StatusCode(201);
+        // }
+        // #endregion
        
-        #region PUT
-        #endregion
+        // #region PUT
+        // #endregion
 
-        #region DELETE
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePostItem(int id)
-        {
-            await this.usersService.EliminarUsuario(id);
-            return Ok();
-        }
+        // #region DELETE
+        // [HttpDelete("{id}")]
+        // public async Task<IActionResult> DeletePostItem(int id)
+        // {
+        //     await this.usersService.EliminarUsuario(id);
+        //     return Ok();
+        // }
         #endregion
 
     }
