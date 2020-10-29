@@ -42,7 +42,7 @@
         - name: Content list
           run: |
             #ls ./
-            ls ${{github.workspace}}/BackEnd/App.Test/TestResults
+            ls ${{github.workspace}}/BackEnd/App.Test
             #ls ${{github.workspace}}
 
         - name: SonarCloud Scan AppDemo
