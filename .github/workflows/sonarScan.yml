@@ -15,11 +15,13 @@
   # Start the job on all push #
   #############################
   on:
-    push:
-      branches:
-        - "main"
-        - "feature*"
-  
+    # push:
+    #   branches:
+    #     - "main"
+
+    pull_request:
+      branches: [ main, CICD ]
+
   ###############
   # Set the Job #
   ###############
