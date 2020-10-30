@@ -44,6 +44,12 @@
 
         - name: scanner begin
           run: dotnet sonarscanner begin /k:"${{ env.key }}" /n:"${{ env.name }}" /v:"${{ env.version }}" /o:"${{ env.organization }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.language="cs" /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" /d:sonar.cs.opencover.reportsPaths="lcov.opencover.xml"
+          env:
+            key: "wkrea_appdemo"
+            name: "appdemo"
+            version: "1."
+            organization: "wkrea"
+
         - name: scanner build
           run: dotnet build Project/Project.csproj
         - name: scanner test
