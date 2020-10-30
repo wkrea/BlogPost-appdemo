@@ -51,7 +51,10 @@
             organization: "wkrea"
 
         - name: scanner build
-          run: dotnet build ${{github.workspace}}/BackEnd/App.Test/*.csproj
+          run: |
+            dotnet build ${{github.workspace}}/BackEnd/App.Infra/*.csproj
+            dotnet build ${{github.workspace}}/BackEnd/App.Core/*.csproj
+            dotnet build ${{github.workspace}}/BackEnd/App.Api/*.csproj
         - name: scanner test
           run: |
             cd ./App.Test/
