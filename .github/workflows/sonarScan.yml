@@ -42,6 +42,15 @@
             dotnet restore
             dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
 
+        - name: restore
+          run: dotnet restore ${{github.workspace}}/BackEnd/App.Api/*.csproj
+        - name: build
+          run: dotnet build ${{github.workspace}}/BackEnd/App.Api/*.csproj --no-restore
+        - name: restore test
+          run: dotnet restore ${{github.workspace}}/BackEnd/App.Test/*.csproj
+        - name: build test
+          run: dotnet build ${{github.workspace}}/BackEnd/App.Test/*.csproj
+
         - name: scanner begin
           run: dotnet sonarscanner begin /k:"${{ env.key }}" /n:"${{ env.name }}" /v:"${{ env.version }}" /o:"${{ env.organization }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.language="cs" /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" /d:sonar.cs.opencover.reportsPaths="lcov.opencover.xml"
           env:
@@ -52,14 +61,14 @@
 
         - name: scanner build
           run: |
-            dotnet build ${{github.workspace}}/BackEnd/App.Infra/*.csproj
-            dotnet build ${{github.workspace}}/BackEnd/App.Core/*.csproj
             dotnet build ${{github.workspace}}/BackEnd/App.Api/*.csproj
+          # dotnet build ${{github.workspace}}/BackEnd/App.Infra/*.csproj
+          # dotnet build ${{github.workspace}}/BackEnd/App.Core/*.csproj
         - name: scanner test
           run: |
             cd ${{github.workspace}}/BackEnd/App.Test/
-            dotnet restore
             dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
+          # dotnet restore
         - name: scanner end
           run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           env:
