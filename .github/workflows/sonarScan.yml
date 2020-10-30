@@ -51,7 +51,7 @@
             organization: "wkrea"
 
         - name: scanner build
-          run: dotnet build Project/Project.csproj
+          run: dotnet build ${{github.workspace}}/BackEnd/App.Test/*.csproj
         - name: scanner test
           run: dotnet test ${{github.workspace}}/BackEnd/App.Test/*.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
         - name: scanner end
