@@ -53,7 +53,10 @@
         - name: scanner build
           run: dotnet build ${{github.workspace}}/BackEnd/App.Test/*.csproj
         - name: scanner test
-          run: dotnet test ${{github.workspace}}/BackEnd/App.Test/*.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
+          run: |
+            cd ./App.Test/
+            dotnet restore
+            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
         - name: scanner end
           run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           env:
