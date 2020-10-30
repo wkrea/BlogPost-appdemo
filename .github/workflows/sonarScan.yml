@@ -33,30 +33,44 @@
         - name: Clone Repository
           uses: actions/checkout@v2
 
+        - name: install sonar-scanner
+          run: dotnet tool install --global dotnet-sonarscanner
+
         - name: Generate coverage report
           run: |
             cd ${{github.workspace}}/BackEnd/App.Test/
             dotnet restore
             dotnet test -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=lcov
 
-        - name: Content list
-          run: |
-            #ls ./
-            ls ${{github.workspace}}/BackEnd/App.Test
-            #ls ${{github.workspace}}
-
-        - name: SonarCloud Scan AppDemo
-          uses: sonarsource/sonarcloud-github-action@master
-          # uses: sonarsource/sonarcloud-github-action@v1.3
+        - name: scanner begin
+          run: dotnet sonarscanner begin /k:"${{ env.key }}" /n:"${{ env.name }}" /v:"${{ env.version }}" /o:"${{ env.organization }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.language="cs" /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" /d:sonar.cs.opencover.reportsPaths="lcov.opencover.xml"
+        - name: scanner build
+          run: dotnet build Project/Project.csproj
+        - name: scanner test
+          run: dotnet test ${{github.workspace}}/BackEnd/App.Test/*.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
+        - name: scanner end
+          run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          with:
-            projectBaseDir: ${{github.workspace}} #/BackEnd/App.Test/
-            args: >
-              -Dsonar.organization=wkrea
-              -Dsonar.projectKey=wkrea_appdemo
-              -Dsonar.verbose=false
-              -Dsonar.sources=./BackEnd/App.Api/
-              -Dsonar.python.coverage.reportPaths=coverage.xml
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+
+        # - name: Content list
+        #   run: |
+        #     #ls ./
+        #     ls ${{github.workspace}}/BackEnd/App.Test
+        #     #ls ${{github.workspace}}
+
+        # - name: SonarCloud Scan AppDemo
+        #   uses: sonarsource/sonarcloud-github-action@master
+        #   # uses: sonarsource/sonarcloud-github-action@v1.3
+        #   env:
+        #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #   with:
+        #     projectBaseDir: ${{github.workspace}} #/BackEnd/App.Test/
+        #     args: >
+        #       -Dsonar.organization=wkrea
+        #       -Dsonar.projectKey=wkrea_appdemo
+        #       -Dsonar.verbose=false
+        #       -Dsonar.sources=./BackEnd/App.Api/
+        #       -Dsonar.python.coverage.reportPaths=coverage.xml
 
