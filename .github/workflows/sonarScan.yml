@@ -57,7 +57,7 @@
             dotnet build ${{github.workspace}}/BackEnd/App.Api/*.csproj
         - name: scanner test
           run: |
-            cd ./App.Test/
+            cd ${{github.workspace}}/BackEnd/App.Test/
             dotnet restore
             dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
         - name: scanner end
