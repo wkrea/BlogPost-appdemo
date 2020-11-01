@@ -17,7 +17,7 @@ dotnet test ./BackEnd/App.Api.sln
 
 ## Referencias
 
-* https://dev.to/equiman/net-core-unit-test-and-code-coverage-with-visual-studio-code-37bp
-* https://github.com/actions/setup-java
-* https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
-* https://github.com/ikemtz/NRSRx/blob/master/tools/sonarqube-create-project-guids.ps1
+* [NetCore coverage](https://dev.to/equiman/net-core-unit-test-and-code-coverage-with-visual-studio-code-37bp)
+* [Github Actions setup-java](https://github.com/actions/setup-java)
+* [NetCore Testing](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test)
+* [SonarQube Guid](https://github.com/ikemtz/NRSRx/blob/master/tools/sonarqube-create-project-guids.ps1)
