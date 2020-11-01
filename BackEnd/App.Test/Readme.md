@@ -14,4 +14,10 @@ dotnet test ./BackEnd/App.Api.sln
 
 * Instalar la extensión de sonarlint
 * Abrir la configuración de la extensión y Actualizar el path de Java **(Sonarlint › Ls: Java Home)** a la última versión (esto evita problemas con análisis de SonarCloud)
-* 
+
+## Referencias
+
+* https://dev.to/equiman/net-core-unit-test-and-code-coverage-with-visual-studio-code-37bp
+* https://github.com/actions/setup-java
+* https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
+* https://github.com/ikemtz/NRSRx/blob/master/tools/sonarqube-create-project-guids.ps1
