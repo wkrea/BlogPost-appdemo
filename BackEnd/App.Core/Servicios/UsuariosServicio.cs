@@ -10,7 +10,7 @@ namespace App.Core.Servicios
 {
     public class UsuariosServicio : IUsuarioServicio
     {
-        private IUsuarioRepositorio _userRepo;
+        private readonly IUsuarioRepositorio _userRepo;
 
         public UsuariosServicio(IUsuarioRepositorio usuarioRepositorio)
         {
@@ -40,12 +40,12 @@ namespace App.Core.Servicios
             return errores;
         }
 
-        public async Task<IEnumerable<ErrorBase>> EditarUsuario(Usuario user)
+        public async Task<IEnumerable<ErrorBase>> EditarUsuario(Usuario usuario)
         {
             List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
-                await this._userRepo.Editar(user);
+                await this._userRepo.Editar(usuario);
             }
             catch
             {

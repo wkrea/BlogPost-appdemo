@@ -1,9 +1,13 @@
 using App.Core.Dominio.Errors;
-public class ApiOkResponse : ErrorBase
+
+namespace App.Core.Dominio.Errors
 {
-    public object response { get; }
-    public ApiOkResponse(object resultado) : base(200)
+    public class ApiOkResponse : ErrorBase
     {
-        response = resultado;
+        public object response { get; }
+        public ApiOkResponse(object resultado) : base(200)
+        {
+            response = resultado;
+        }
     }
 }

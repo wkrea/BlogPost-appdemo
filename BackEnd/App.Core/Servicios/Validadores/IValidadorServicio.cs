@@ -11,6 +11,6 @@ namespace App.Core.Servicios.Validadores
     /// <typeparam name="T">Tipo del validador</typeparam>
     public interface IValidadorServicio<T>
     {
-        IEnumerable<ErrorBase> Validar(T entity);
+        IEnumerable<ErrorBase> Validar(T instancia);
     }
 }

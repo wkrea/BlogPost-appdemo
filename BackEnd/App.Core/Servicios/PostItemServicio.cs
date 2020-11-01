@@ -12,10 +12,10 @@ namespace App.Core.Servicios
 {
     public class PostItemServicio : IPostItemServicio
     {
-        private IPostItemRepositorio postItemRepositorio;
-        private IComentarioRepositorio comentarioRepositorio;
-        private PostValidador postValidator;
-        private ComentarioValidador comentarioValidator;
+        private readonly IPostItemRepositorio postItemRepositorio;
+        private readonly IComentarioRepositorio comentarioRepositorio;
+        private readonly PostValidador postValidator;
+        private readonly ComentarioValidador comentarioValidator;
 
         public PostItemServicio(
             IPostItemRepositorio postItemRepo,
@@ -35,7 +35,7 @@ namespace App.Core.Servicios
         }
         public async Task<PostItem> GetPostItemById(int id)
         {
-            return await this.postItemRepositorio.BuscarXId(id);;
+            return await this.postItemRepositorio.BuscarXId(id);
         }
         public async Task<IEnumerable<ErrorBase>> CrearPostItem(PostItem postItem)
         {
@@ -72,7 +72,7 @@ namespace App.Core.Servicios
 
         public async Task<IEnumerable<ErrorBase>> EliminarPostItem(PostItem postItem)
         {
-            List<ErrorBase> errores = null;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 errores.AddRange(this.postValidator.Validar(postItem));
@@ -88,7 +88,7 @@ namespace App.Core.Servicios
         public async Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comentario)
         {
             comentario.CreadoFecha = DateTime.Now;
-            List<ErrorBase> errores = null;
+            List<ErrorBase> errores = new List<ErrorBase>();
             try
             {
                 errores.AddRange(this.comentarioValidator.Validar(comentario));

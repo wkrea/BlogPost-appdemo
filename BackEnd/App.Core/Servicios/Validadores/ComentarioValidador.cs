@@ -14,28 +14,28 @@ namespace App.Core.Servicios.Validadores
     /// </summary>
     public class ComentarioValidador : IValidadorServicio<Comentario>
     {
-        private IPostItemRepositorio postItemRepository;
+        private readonly IPostItemRepositorio postItemRepository;
 
         public ComentarioValidador(IPostItemRepositorio postItemRepository)
         {
             this.postItemRepository = postItemRepository;
         }
 
-        public IEnumerable<ErrorBase> Validar(Comentario comentario)
+        public IEnumerable<ErrorBase> Validar(Comentario instancia)
         {
             var ErrorBases = new List<ErrorBase>();
 
-            if (postItemRepository.BuscarXId(comentario.PostId) == null)
+            if (postItemRepository.BuscarXId(instancia.PostId) == null)
             {
                 ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"No existe PostId"));
             }
 
-            if (string.IsNullOrEmpty(comentario?.Texto))
+            if (string.IsNullOrEmpty(instancia?.Texto))
             {
-                ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"{nameof(comentario)} no contiene texto"));
+                ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"{nameof(instancia)} no contiene texto"));
             }
 
-            if (comentario.PostId <= 0)
+            if (instancia.PostId <= 0)
             {
                 ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje: "PostId no válido"));
             }

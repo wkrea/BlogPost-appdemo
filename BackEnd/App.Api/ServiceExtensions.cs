@@ -13,10 +13,14 @@ namespace App.Api
     {
         public static void ConfigureRepositoryWrapper(this IServiceCollection services, IConfiguration config)
         {
-            var connectionString = config["sqlconnection:connectionString"];
+            // SqlServer
+            //var connectionString = config["sqlconnection:connectionString"];
+            // optionsBuilder.UseSqlServer(connectionString);
+
+            // En memoria
             var optionsBuilder = new DbContextOptionsBuilder<AppDBContext>();
-            // optionsBuilder.UseSqlServer(connectionString); // SqlServer
-            optionsBuilder.UseInMemoryDatabase("db_memoria"); // En memoria
+            optionsBuilder.UseInMemoryDatabase("db_memoria");
+
             var context = new AppDBContext(optionsBuilder.Options);
             services.AddSingleton<IPostItemRepositorio>(new PostItemRepositorio(context));
             services.AddSingleton<IComentarioRepositorio>(new ComentarioRepositorio(context));

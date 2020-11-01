@@ -16,7 +16,7 @@ namespace App.Test.Accesorios
       protected readonly HttpClient _client;
       protected readonly IConfiguration _configuration;
 
-      public IntegrationTest(WebApiFactory fixture)
+      protected IntegrationTest(WebApiFactory fixture)
       {
           _factory = fixture;
           _client = _factory.CreateClient();

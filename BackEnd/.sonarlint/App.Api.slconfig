@@ -1,0 +1,15 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "wkrea",
+    "Name": "wkrea"
+  },
+  "ProjectKey": "wkrea_appdemo",
+  "ProjectName": "appdemo",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWza9ahN-aRCj7tsvlE3",
+      "ProfileTimestamp": "2020-10-13T14:12:09Z"
+    }
+  }
+}

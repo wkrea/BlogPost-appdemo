@@ -17,6 +17,9 @@ dotnet test ./BackEnd/App.Api.sln
 
 ## Referencias
 
+* [dotnet-sonar Docker Image](https://github.com/nosinovacao/dotnet-sonar)
+* [Sonar VSCode](https://elguerre.com/2019/01/12/code-analysis-and-code-coverage-using-netcore-vs-code-publishing-to-sonarqube-sonarcloud-io/)
+* [Code Analysis with SonarQube + Docker + .NET Core](https://medium.com/@thiagoloureiro/code-analysis-with-sonarqube-docker-net-core-aee521ee8931)
 * [NetCore coverage](https://dev.to/equiman/net-core-unit-test-and-code-coverage-with-visual-studio-code-37bp)
 * [Github Actions setup-java](https://github.com/actions/setup-java)
 * [NetCore Testing](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test)
