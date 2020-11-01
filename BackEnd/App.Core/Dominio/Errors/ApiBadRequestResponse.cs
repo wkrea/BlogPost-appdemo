@@ -4,19 +4,22 @@ using System.Linq;
 using App.Core.Dominio.Errors;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-public class ApiBadRequestResponse : ErrorBase
+namespace App.Core.Dominio.Errors
 {
-    public IEnumerable<string> Errores { get; }
-    public ApiBadRequestResponse(ModelStateDictionary modelState) : base(400)
+    public class ApiBadRequestResponse : ErrorBase
     {
-        if (modelState.IsValid)
+        public IEnumerable<string> Errores { get; }
+        public ApiBadRequestResponse(ModelStateDictionary modelState) : base(400)
         {
-            throw new ArgumentException("Los datos suministrados no parecen válidos", nameof(modelState));
-        }
+            if (modelState.IsValid)
+            {
+                throw new ArgumentException("Los datos suministrados no parecen válidos", nameof(modelState));
+            }
 
-        Errores = modelState
-                    .SelectMany(x => x.Value.Errors)
-                    .Select(x => x.ErrorMessage)
-                    .ToArray();
+            Errores = modelState
+                        .SelectMany(x => x.Value.Errors)
+                        .Select(x => x.ErrorMessage)
+                        .ToArray();
+        }
     }
 }

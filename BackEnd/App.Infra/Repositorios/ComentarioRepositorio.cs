@@ -13,7 +13,7 @@ namespace App.Infra.Repositorios
 {
     public class ComentarioRepositorio : IComentarioRepositorio
     {
-        private AppDBContext _contexto;
+        private readonly AppDBContext _contexto;
 
         public ComentarioRepositorio(AppDBContext AppDBContext)
         {
@@ -24,9 +24,9 @@ namespace App.Infra.Repositorios
             {
                 await _contexto.SaveChangesAsync();
             }
-            catch (DbException ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
         public async Task<IEnumerable<Comentario>> Listar() => await _contexto.Comentarios.AsNoTracking().ToListAsync();

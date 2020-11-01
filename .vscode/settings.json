@@ -2,11 +2,9 @@
   "cSpell.language": ",es",
   "dotnet-test-explorer.testProjectPath": "./BackEnd/App.Test/*Test.@(csproj|vbproj|fsproj)",
   "sonarlint.analyzerProperties": {
-  
-    
   },
   "sonarlint.connectedMode.project" : {
-    "connectionId": "wkrea_test",
     "projectKey": "wkrea_appdemo"
   }
+
 }

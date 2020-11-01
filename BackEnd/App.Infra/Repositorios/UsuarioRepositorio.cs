@@ -10,7 +10,7 @@ namespace App.Infra.Repositorios
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
-        private AppDBContext _context;
+        private readonly AppDBContext _context;
         public UsuarioRepositorio(AppDBContext AppDBContext)
         {
             this._context = AppDBContext;
@@ -20,9 +20,9 @@ namespace App.Infra.Repositorios
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbException ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
         public async Task<IEnumerable<Usuario>> Listar() => await _context.Usuarios.ToListAsync<Usuario>();

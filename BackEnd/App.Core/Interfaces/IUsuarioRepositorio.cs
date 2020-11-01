@@ -7,10 +7,10 @@ namespace App.Core.Interfaces
     public interface IUsuarioRepositorio
     {
         Task GuardarContext();
-        Task<IEnumerable<Usuario>> Listar(); //{ get; }
-        Task Crear(Usuario postItem);
+        Task<IEnumerable<Usuario>> Listar();
+        Task Crear(Usuario usuario);
         Task Eliminar(int id);
-        Task Editar(Usuario postItem);
+        Task Editar(Usuario usuario);
         Task<Usuario> BuscarXId(int Id);
     }
 }
