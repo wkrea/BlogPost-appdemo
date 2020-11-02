@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using App.Core.Dominio.Errors;
-using App.Core.DTO;
-using App.Core.DTO.Command;
 using App.Core.Servicios;
 using App.Core.Dominio;
 
@@ -14,7 +10,7 @@ namespace App.Api.Controllers
     [Route("api/PostItem")]
     public class PostItemController : ControllerBase
     {
-        private IPostItemServicio postItemService;
+        private readonly IPostItemServicio postItemService;
 
         public PostItemController(IPostItemServicio postItemService)
         {

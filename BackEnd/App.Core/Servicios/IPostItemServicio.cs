@@ -14,7 +14,7 @@ namespace App.Core.Servicios
         Task<IEnumerable<ErrorBase>> EliminarPostItem(PostItem postItem);
 
         #region cruce PostItem-->Comentarios
-        Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comment);
+        Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comentario);
         Task<IEnumerable<Comentario>> GetComentariosByPostItemId(int postId);
         #endregion
     }

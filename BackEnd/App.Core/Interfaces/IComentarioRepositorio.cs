@@ -8,9 +8,9 @@ namespace App.Core.Interfaces
     {
         Task GuardarContext();
         Task<IEnumerable<Comentario>> Listar();
-        Task Crear(Comentario comment);
+        Task Crear(Comentario comentario);
         Task Eliminar(int id);
-        Task Editar(Comentario comment);
+        Task Editar(Comentario comentario);
         Task<Comentario> BuscarXId(int Id);
         Task<IEnumerable<Comentario>> BuscarPostXId(int postId);
     }

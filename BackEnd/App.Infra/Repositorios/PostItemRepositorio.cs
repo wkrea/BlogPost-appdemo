@@ -1,6 +1,5 @@
 ﻿using System.Data.Common;
 using App.Core.Dominio;
-using App.Core.Dominio.Errors;
 using App.Core.Interfaces;
 using App.Infra.Contexto;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +10,7 @@ namespace App.Infra.Repositorios
 {
     public class PostItemRepositorio : IPostItemRepositorio
     {
-        private AppDBContext _context;
+        private readonly AppDBContext _context;
 
         public PostItemRepositorio(AppDBContext AppDBContext)
         {
@@ -23,9 +22,9 @@ namespace App.Infra.Repositorios
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbException ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -46,9 +45,9 @@ namespace App.Infra.Repositorios
             await this.GuardarContext();
         }
 
-        public async Task Eliminar(PostItem item)
+        public async Task Eliminar(PostItem postItem)
         {
-            _context.PostItems.Remove(item);
+            _context.PostItems.Remove(postItem);
             await this.GuardarContext();
         }
 

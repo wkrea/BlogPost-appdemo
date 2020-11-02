@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using App.Core.Dominio;
 using App.Core.Servicios;
 
 namespace App.Api.Controllers
@@ -8,7 +7,7 @@ namespace App.Api.Controllers
     [Route("api/Users")]
     public class UsersController : ControllerBase
     {
-        private IUsuarioServicio usersService;
+        private readonly IUsuarioServicio usersService;
 
         public UsersController(IUsuarioServicio usersService)
         {

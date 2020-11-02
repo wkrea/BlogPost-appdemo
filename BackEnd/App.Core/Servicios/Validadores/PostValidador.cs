@@ -14,29 +14,29 @@ namespace App.Core.Servicios.Validadores
     /// </summary>
     public class PostValidador : IValidadorServicio<PostItem>
     {
-        private IUsuarioRepositorio userRepository;
+        private readonly IUsuarioRepositorio userRepository;
 
         public PostValidador(IUsuarioRepositorio userRepository)
         {
             this.userRepository = userRepository;
         }
 
-        public IEnumerable<ErrorBase> Validar(PostItem postItem)
+        public IEnumerable<ErrorBase> Validar(PostItem instancia)
         {
             var ErrorBases = new List<ErrorBase>();
 
-            var existeUsuario = userRepository.BuscarXId(postItem.UserId);
+            var existeUsuario = userRepository.BuscarXId(instancia.UserId);
             if (existeUsuario.Result == null)
             {
                 ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"No existe UserId"));
             }
 
-            if (string.IsNullOrEmpty(postItem?.Texto))
+            if (string.IsNullOrEmpty(instancia?.Texto))
             {
                 ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:$"postItem no contiene text"));
             }
 
-            if (postItem.UserId <= 0)
+            if (instancia.UserId <= 0)
             {
                 ErrorBases.Add(new ErrorBase(StatusCodes.Status400BadRequest, mensaje:"Usuario no Valido"));
             }
