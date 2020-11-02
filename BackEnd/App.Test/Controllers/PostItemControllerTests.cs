@@ -10,7 +10,7 @@ using Xunit;
 // https://andrewlock.net/converting-integration-tests-to-net-core-3/
 // https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/
 // https://blogs.sap.com/2019/12/25/real-time-code-scan-with-sonarlint-following-sonarqube-server-rules-in-visual-studio-codevs-code/
-namespace App.Test
+namespace App.Test.Controllers
 {
   public class PostItemControllerTests : IntegrationTest
     {

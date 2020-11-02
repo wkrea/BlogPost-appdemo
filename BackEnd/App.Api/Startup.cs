@@ -31,6 +31,7 @@ namespace App.Api
             services.AddSwaggerGen(options =>
             {
                 var groupName = "v1";
+                var urlGIDSAW = "https://www.udi.edu.co/investigaciones/94-grupos-investigacion/gidsaw";
                 options.SwaggerDoc(groupName, new OpenApiInfo
                 {
                     Title = $"API Test - {groupName}",
@@ -40,7 +41,7 @@ namespace App.Api
                     {
                         Name = "GIDSAW",
                         Email = string.Empty,
-                        Url = new Uri("https://www.udi.edu.co/investigaciones/94-grupos-investigacion/gidsaw"),
+                        Url = new Uri(urlGIDSAW),
                     }
                 });
             });
