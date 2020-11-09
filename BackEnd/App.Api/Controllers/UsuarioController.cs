@@ -5,11 +5,11 @@ using App.Core.Servicios;
 namespace App.Api.Controllers
 {
     [Route("api/Users")]
-    public class UsersController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioServicio usersService;
 
-        public UsersController(IUsuarioServicio usersService)
+        public UsuarioController(IUsuarioServicio usersService)
         {
             this.usersService = usersService;
         }
@@ -22,13 +22,13 @@ namespace App.Api.Controllers
             return Ok(users);
         }
 
-        // [HttpGet("{id}")]
-        // public async Task<IActionResult> GetUser(int id)
-        // {
-        //     var user = await this.usersService.GetUsuario(id);
-        //     return Ok(user);
-        // }
-        // #endregion
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var user = await this.usersService.GetUsuario(id);
+            return Ok(user);
+        }
+        //#endregion
 
         // #region POST
         // [HttpPost]
@@ -38,7 +38,7 @@ namespace App.Api.Controllers
         //     return StatusCode(201);
         // }
         // #endregion
-       
+
         // #region PUT
         // #endregion
 
@@ -49,7 +49,7 @@ namespace App.Api.Controllers
         //     await this.usersService.EliminarUsuario(id);
         //     return Ok();
         // }
-        #endregion
+#endregion
 
     }
 }
