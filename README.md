@@ -7,26 +7,19 @@ ___
 
 Las métricas de seguridad para productos de software proporcionan una medición cuantitativa del grado de confiabilidad de los sistemas de software
 
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=security_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=security_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
 
 ## Coverage
 
 La cobertura de código es una medida que nos indica el porcentaje de código validado por los tests.
 
-[![Coverage Status](https://coveralls.io/repos/github/wkrea/appdemo/badge.svg?branch=main)](https://coveralls.io/github/wkrea/appdemo?branch=main)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=coverage)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
+[![Coverage Status](https://coveralls.io/repos/github/wkrea/appdemo/badge.svg?branch=main)](https://coveralls.io/github/wkrea/appdemo?branch=main) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=coverage)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
 
 ## Métricas de calidad (QA)
 
 El Quality Gate es la función que utiliza SonarQube para asegurar el cumplimiento de la Política de Calidad en tu organización.
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=alert_status)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=bugs)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=code_smells)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=alert_status)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=bugs)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=code_smells)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
 
 
 La aplicación puedes ser ejecutada de varias maneras para propósitos de desarrollo y/o prueba.
