@@ -7,9 +7,15 @@ using FluentAssertions;
 using Newtonsoft.Json;
 using Xunit;
 
+// https://www.thinktecture.com/en/entity-framework-core/isolation-of-integration-tests-in-2-1/
+// https://www.carlrippon.com/testing-ef-core-repositories-with-xunit-and-an-in-memory-db/
+// https://www.codeproject.com/Articles/5250190/Integration-Tests-in-ASP-NET-Core-A-DBContext
 // https://andrewlock.net/converting-integration-tests-to-net-core-3/
+// https://dzone.com/articles/integration-testing-data-access-in-aspnet-core
 // https://andrewlock.net/creating-parameterised-tests-in-xunit-with-inlinedata-classdata-and-memberdata/
 // https://blogs.sap.com/2019/12/25/real-time-code-scan-with-sonarlint-following-sonarqube-server-rules-in-visual-studio-codevs-code/
+// https://www.thecodebuzz.com/understanding-async-and-await-api-asynchronous-programming/
+
 namespace App.Test.Controllers
 {
   public class PostItemControllerTests : IntegrationTest
