@@ -5,6 +5,27 @@
   },
   "sonarlint.connectedMode.project" : {
     "projectKey": "wkrea_appdemo"
-  }
+  },
+  "cSpell.words": [
+    "Bugs",
+    "Docker",
+    "Duplicated",
+    "Gate",
+    "Maintainability",
+    "Overview",
+    "Quality",
+    "Qube",
+    "Rating",
+    "Reliability",
+    "Validador",
+    "Vulnerabilities",
+    "appdemo",
+    "diagram",
+    "escalabilidad",
+    "mantenibilidad",
+    "plantuml",
+    "puml",
+    "sonarqube"
+  ]
 
 }

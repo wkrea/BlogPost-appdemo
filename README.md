@@ -21,11 +21,18 @@ El Quality Gate es la función que utiliza SonarQube para asegurar el cumplimien
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=alert_status)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=bugs)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=wkrea_appdemo) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=wkrea_appdemo&metric=code_smells)](https://sonarcloud.io/dashboard?id=wkrea_appdemo)
 
-### Título:
+### Título
+
 Metodología para la introducción al Desarrollo de Aplicaciones Web Modular.
 
-### Descripción:
-El presente proyecto está enfocado en definir una estrategia de enseñanza en el ámbito de la programación de software modular; mediante una serie de pasos lógicos, coherentes y contextualizados que permitan a los estudiantes de ingeniería y/o programadores adquirir el conocimiento y habilidades necesarias para lograr desarrollos más estructurados y ordenados. Se pretende que el estudiante tenga una idea más amplia sobre el desarrollo de software, que le permita ver más allá de la etapa de codificación; y tener un panorama en el que la algorítmica se complementa con plantear, diseñar software; para resolver problemas de forma lógica, estructurada y escalable.La metodología busca transmitir los conceptos teóricos y buenas prácticas en el desarrollo, que permitan al lector construir aplicativos de software que involucran; capa de persistencia, lógica de negocio y/o presentación; y que además tengan características como la mantenibilidad y escalabilidad en términos de arquitectura de hardware y software. Es así como el desarrollo de la metodología presenta el contexto necesario detrás de los conceptos empleados en el desarrollo de un aplicativo web.
+### Descripción
+
+El presente proyecto está enfocado en definir una estrategia de enseñanza en el ámbito de la programación de software modular; mediante una serie de pasos lógicos, coherentes y contextualizados que permitan a los estudiantes de ingeniería y/o programadores adquirir el conocimiento y habilidades necesarias para lograr desarrollos más estructurados y ordenados.
+
+Se pretende que el estudiante tenga una idea más amplia sobre el desarrollo de software, que le permita ver más allá de la etapa de codificación; y tener un panorama en el que la algorítmica se complementa con plantear, diseñar software; para resolver problemas de forma lógica, estructurada y escalable.
+
+La metodología busca transmitir los conceptos teóricos y buenas prácticas en el desarrollo, que permitan al lector construir aplicativos de software que involucran; capa de persistencia, lógica de negocio y/o presentación; y que además tengan características como la mantenibilidad y escalabilidad en términos de arquitectura de hardware y software. Es así como el desarrollo de la metodología presenta el contexto necesario detrás de los conceptos empleados en el desarrollo de un aplicativo web.
+
 La aplicación puedes ser ejecutada de varias maneras para propósitos de desarrollo y/o prueba.
 
 El aplicativo puede ser ejecutado de dos formas:
@@ -67,7 +74,7 @@ o viceversa, según sea el caso de su preferencia.
 
 1. Ubicado en `appdemo`
 2. Ejecute `docker-compose up db`
-3. Ubiquese en `appdemo\BackEnd\App.Api`
+3. Ubíquese en `appdemo\BackEnd\App.Api`
 4. Ejecute `dotnet build` y luego Ejecute `dotnet run`
 5. Verifique que puede obtener un resultado en alguna de las siguientes rutas
    * [https://localhost:5001/api/users](https://localhost:5001/api/users)
@@ -85,7 +92,7 @@ o viceversa, según sea el caso de su preferencia.
 
 ![Overview_appdemo](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wkrea/appdemo/main/Assets/Overview_appdemo.puml)
 
-### Diseño Fisico
+### Diseño Físico
 
 ```plantuml
 '!include ./Assets/Diseno_fisico.puml
