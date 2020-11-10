@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using App.Core.Servicios;
+using App.Core.Dominio;
+using App.Core.Dominio.Errors;
 
 namespace App.Api.Controllers
 {
@@ -30,14 +32,15 @@ namespace App.Api.Controllers
         }
         //#endregion
 
-        // #region POST
-        // [HttpPost]
-        // public async Task<IActionResult> CreateUser(Usuario user)
-        // {
-        //     await this.usersService.CrearUsuario(user);
-        //     return StatusCode(201);
-        // }
-        // #endregion
+        #region POST
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(Usuario user)
+        {
+            await this.usersService.CrearUsuario(user);
+            return StatusCode(201);
+            // return Ok(new ErrorBase(201));
+        }
+        #endregion
 
         // #region PUT
         // #endregion

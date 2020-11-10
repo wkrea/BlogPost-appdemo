@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using App.Core.Dominio;
@@ -68,6 +70,44 @@ namespace App.Test.Controllers
                 Assert.IsType<Usuario>(usuario);
                 Assert.Equal(userId, usuario.Id);
             }
+        }
+
+        /// <summary>
+        /// https://carldesouza.com/httpclient-getasync-postasync-sendasync-c/
+        /// https://www.c-sharpcorner.com/article/json-serialization-and-deserialization-in-c-sharp/
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task POST_Puede_Crear_Usuarios()
+        {
+            Uri u = new Uri("http://localhost:5000/api/Users");
+            Usuario nuevoUsuario = new Usuario { UserName = "usuarioPrueba", Email = "usuarioPrueba@gmail.com" };
+            // var payload = "{\"Email\": \"usuarioPrueba@gmail.com\"}";
+            // System.Text.Json; --> Microsoft
+            // string payload = JsonSerializer.Serialize(nuevoUsuario);
+            // Newtonsoft.Json; --> Newtonsoft
+            string payload = JsonConvert.SerializeObject(nuevoUsuario);
+
+            HttpContent sendContent = new StringContent(payload, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync("api/Users", sendContent);
+
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.Created);
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal("Created", response.StatusCode.ToString());
+            Assert.Equal(201, (int)response.StatusCode);
+
+            // response.StatusCode.Should().Be(HttpStatusCode.OK);
+            // System.Text.Json; --> Microsoft
+            // var resultado = JsonSerializer.Deserialize<ErrorBase>(content);
+            // Newtonsoft.Json; --> Newtonsoft
+            // var usuarios = JsonConvert.DeserializeObject<Usuario[]>(content);
+
+            // Assert.IsType<ErrorBase>(resultado);
+            // Assert.Contains("creado", resultado.Mensaje);
+            // Assert.Equal(resultado.StatusCode, (int)HttpStatusCode.Created); //201
         }
     }
 }
