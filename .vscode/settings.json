@@ -5,6 +5,9 @@
   },
   "sonarlint.connectedMode.project" : {
     "projectKey": "wkrea_appdemo"
-  }
+  },
+  "cSpell.words": [
+    "Validador"
+  ]
 
 }
