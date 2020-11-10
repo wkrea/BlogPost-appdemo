@@ -30,15 +30,16 @@ cloud {
 
 node "App.Api" {
   [Controllers]
-  [Startup] ..> () Contexto : use
-  [Startup] ..> () Repositorios : use
+  Contexto ..> [Startup] : use
+  Repositorios ..> [Startup] : use
   package "Controllers"{
     [PostItemControllers] ..> [HTTP/HTTPS] : use
     [PostItemControllers] ..> [IPostItemServicio] : use
     [UserControllers] ..> [HTTP/HTTPS] : use
     [UserControllers] ..> [IUsuariosServicio] : use
+    ' [IUsuariosServicio] ..> () [Startup] : use
+    ' [IPostItemServicio] ..> () [Startup] : use
   }
-
 }
 
 node "App.Core" {
@@ -48,7 +49,7 @@ node "App.Core" {
     () IUsuarioRepositorio
   }
   package "Servicios"{
-    [IComentarioServicio]
+    ' [IComentarioServicio]
     [IPostItemServicio]
     [IUsuariosServicio]
     ' [ComentarioServicio] --(0- IComentarioServicio : implements

@@ -26,6 +26,10 @@ namespace App.Api
             services.AddSingleton<IComentarioRepositorio>(new ComentarioRepositorio(context));
             services.AddSingleton<IUsuarioRepositorio>(new UsuarioRepositorio(context));
             context.EnsureSeedDataForContext();
+
+            // Esta linea asegura funcionamiento de Test en paralelo y la existencia de un 
+            // unico contexto de base de datos para todos los threads (xUnit Test)
+            context.Database.EnsureCreated(); 
         }
 
         public static void ConfigureServiceWrapper(this IServiceCollection services)

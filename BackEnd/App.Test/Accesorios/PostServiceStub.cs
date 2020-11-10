@@ -25,7 +25,7 @@ namespace App.Test.Accesorios
       throw new System.NotImplementedException();
     }
     
-    public Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comment)
+    public Task<IEnumerable<ErrorBase>> CrearComentario(Comentario comentario)
     {
       throw new System.NotImplementedException();
     }
